@@ -3,33 +3,29 @@
 @import "src/scss/_variables.scss";
 
 nav{
-    height: 100vh;
+    height: 100px;
     position: relative;
-
-    @media (max-width: 64em){
-        height: 6.25rem;
-        background-color: #f7f7f7;
-    }   
+    background-color: white;
+    
 }
 
 
 .logo{
     position: absolute;
-    top:2%;
+    transform: translate(0, -50%);
+    top:50%;
     left: 5%;
-    @media (max-width: 64em){
-        transform: translate(0, -50%);
-        top: 50%;
-    }
+    overflow-x: hidden;
 }
 
 .hamburger{ //mobile
     position: absolute;
     transform: translate(0, -50%);
-    top: 50%;
     right: 10%;
+    top:50%;
     height: 15px;
-    width: 30px;   
+    width: 30px;
+    z-index: 2;
     > span{
         display: block;
         width: 30px;
@@ -47,20 +43,25 @@ nav{
 
 .button-group{
     position: absolute;
-    top: 5%;
+    transform: translate(0, -50%);
+    top:50%;
     right: 5%;
     > a {
         text-decoration: none;
         font-weight: bold;
-        color:white;
         &:not(:last-child){
+            color:black;
             margin-right: 2rem;
         } 
+        &:last-child{
+            color: white;
+        }
     }
-    @media (max-width: 64em){
+    @include breakpoints-down(medium){
         transform: translate(0, -50%);
         top: 50%;
     }
+    
 }
 
 .register{
@@ -104,11 +105,18 @@ nav{
 
 .side-bar{
     position: absolute;
+    top: 15%;
     width: 100%;
     height: 0%;
     background-color: white;
     transition: all ease-in-out 100ms;
     z-index: 1;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048);
+
     &-register{
         background-color: var(--dark-blue);
         padding: 10px 20px;
@@ -117,8 +125,8 @@ nav{
         margin-right: 30%;
         color:white !important;
     }
-    
-    @media (min-width: 64em){
+
+    @include breakpoints-up(large){
         display: none;
     }
 }
@@ -145,7 +153,6 @@ nav{
         text-decoration: none;
         font-weight: bold;
         color:black;
-        
         &:not(:last-child){
             margin-bottom: 1rem;
         }
@@ -154,18 +161,16 @@ nav{
         right: 5%;
     }  
 }
-/*
-.hero-image-container{
-    @media (max-width: 64em){
-        display: none;
-    }
-}*/
 
+.hero-image-container{
+    position: relative;
+}
+/*
 .hero-image{
     width: 100%;
     height: 100vh;
     filter: brightness(50%);
-}
+}*/
 
 .hero-image-text{
     position: absolute;
@@ -175,28 +180,34 @@ nav{
     font-size: 75px;
     font-weight: bold;
     width: 60%;
-
+    overflow: hidden;
     @include breakpoints-up(xlarge){
-        font-size: 6.25rem;
         width: 70%;
     }
 
-}  
-
-.description{
-    margin: 50px 100px;
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    
-
-    @include breakpoints-up(xlarge){
-        font-size: 6.25rem;
+    @media (max-width: 64em){
+        font-size: 2rem;
         width: 70%;
     }
+
+    @media (max-width: 26.937rem){
+        font-size: 1.5rem;
+    }
+
 }
 
-.waves{
-    position: absolute;
-    top:0;
+.hero-image-mobile{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("src/assets/biosec.jpg");
+
+    /* Set a specific height */
+    width: 100%;
+    height: 80vh;
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include breakpoints-down(medium){
+        height: 50vh;
+    }
 }

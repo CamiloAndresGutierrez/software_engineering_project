@@ -1,0 +1,73 @@
+@import "src/scss/_globals.scss";
+@import "src/scss/_mixins.scss";
+@import "src/scss/_variables.scss";
+
+input {
+    height:2.1875rem;
+    border-radius: 0.3125rem;
+    border: 1px solid rgba(128, 128, 128, 0.61);
+}
+
+.form{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 30%;
+    height: 33.5rem;
+    margin-top: 3.125rem;
+    background-color: white;
+    border-radius: 2rem;    
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+    @include breakpoints-down(large){
+        width: 50%;
+    }
+    @include breakpoints-down(medium){
+        width: 90%;
+    }
+    > h1 {
+        padding-top:50px;
+    }
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    
+    //margin-left: 6.25rem;
+    //margin-right: 6.25rem;
+    position: absolute;
+    transform: translate(0, -50%);
+    width: 80%;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right:  auto;
+    > input{
+        margin-bottom: 0.625rem;
+    }
+    @include breakpoints-down(medium){
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+.submit{
+    background-color: var(--dark-blue);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    transition: all ease-in-out 0.2s;
+    color:white;
+    height: 3rem;
+    &:hover{
+        background-color: var(--active-dark-blue);
+    }
+}

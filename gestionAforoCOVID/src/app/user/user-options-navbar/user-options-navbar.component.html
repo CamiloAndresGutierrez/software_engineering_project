@@ -1,0 +1,30 @@
+<nav>
+
+    <a href="/">
+        <div class="logo">
+            <img src="assets/logoB.png" alt="Gestion de Accesos y Aforo">
+        </div>
+    </a>
+    <div class="hamburger hide-desktop" [ngClass]="checkFlag() ? 'open' : ''" (click)="changeFlag()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="button-group hide-mobile">
+        <a class="home" href=""> Inicio</a>
+        <a class="about-us" href="">Sobre nosotros</a>
+        <a class="login" href="/user-options/login">Iniciar Sesión</a>
+        <a class="register" href="/user-options/registration">Registrarse</a>
+    </div>
+    
+        
+</nav>
+
+<div class="side-bar" [ngClass]="checkFlag() ? 'show-side-bar' : ''">
+    <div class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
+        <a class="side-bar-home" href=""> Inicio</a>
+        <a class="side-bar-about-us" href=""> Sobre nosotros</a>
+        <a class="side-bar-login" href="/user-options/login"> Iniciar Sesión</a>
+        <a class="side-bar-register" href="/user-options/registration"> Registrarse</a>
+    </div>    
+</div>

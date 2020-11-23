@@ -1,0 +1,91 @@
+@import "src/scss/_globals.scss";
+@import "src/scss/_mixins.scss";
+@import "src/scss/_variables.scss";
+
+.container{
+    position: relative;
+}
+
+.role{
+    margin-bottom: 62.5rem;
+    width: 50%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 1.875rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    text-align: center;
+    > button{
+        font-size: 1rem;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        color:black;
+        background-color: white;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        transition: all ease-in-out 300ms;
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048);
+        &:hover{
+            box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+
+        }
+        @include breakpoints-down(small){
+            font-size: 0.75rem;
+        }
+    }
+    button::-moz-focus-inner {
+        border: 0;
+    }
+    button:first-child{
+        border-radius: 50px 0px 0px 50px;
+    }
+
+    
+    button:last-child{
+        border-radius: 0px 50px 50px 0px;
+    }
+    @include breakpoints-down(small){
+        width: 95%;
+    }
+}
+
+.active {
+    color:white !important;
+    background-color: var(--dark-blue) !important;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072) !important;
+}
+
+.message{
+    margin-top: 6.25rem;
+    width: 50%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    @include breakpoints-down(small){
+        width: 100%;
+        font-size: 0.625rem;
+    }
+}
+
+.hero-image{
+    margin-top: 3%;
+    width: 100%;
+}
