@@ -14,6 +14,12 @@ import { FooterComponent } from './landing-page/footer/footer.component';
 import { CitizenComponent } from './user/user-options-registration/citizen/citizen.component';
 import { EstablishmentComponent } from './user/user-options-registration/establishment/establishment.component';
 import { HealthEntityComponent } from './user/user-options-registration/health-entity/health-entity.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserNavbarComponent } from './user-profile/user-navbar/user-navbar.component';
+import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
+import { DashboardGuard, MainGuard } from './authentication.guard';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -28,13 +34,21 @@ import { HealthEntityComponent } from './user/user-options-registration/health-e
     FooterComponent,
     CitizenComponent,
     EstablishmentComponent,
-    HealthEntityComponent
+    HealthEntityComponent,
+    UserNavbarComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DashboardGuard,
+    MainGuard,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

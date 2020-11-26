@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DashboardGuard , MainGuard } from './authentication.guard';
 import { LangingPageComponent } from './landing-page/langing-page/langing-page.component';
 import { MainComponent } from './landing-page/main/main.component';
+import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
 import { UserOptionsLoginComponent } from './user/user-options-login/user-options-login.component';
 import { UserOptionsMainComponent } from './user/user-options-main/user-options-main.component';
 import { CitizenComponent } from './user/user-options-registration/citizen/citizen.component';
@@ -12,12 +14,14 @@ import { UserOptionsRegistrationComponent } from './user/user-options-registrati
 
 const routes: Routes = [
   {
-    path:"", 
-    component: MainComponent
+    path:"",
+    component: MainComponent,
+    canActivate : [DashboardGuard]
   },
   {
-    path:"user-options", 
+    path:"", 
     component: UserOptionsMainComponent,
+    canActivate : [DashboardGuard],
     children:[
       {
         path:"registration",
@@ -42,6 +46,11 @@ const routes: Routes = [
         component: UserOptionsLoginComponent
       }
     ]
+  },
+  {
+    path: "dashboard",
+    component: UserDashboardComponent,
+    canActivate : [MainGuard]
   }
 
 ];

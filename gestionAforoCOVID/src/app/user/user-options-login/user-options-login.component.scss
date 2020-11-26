@@ -36,6 +36,10 @@ input {
     }
 }
 
+.is-invalid{
+    border-color: red; 
+}
+
 .login-form{
     display: flex;
     flex-direction: column;

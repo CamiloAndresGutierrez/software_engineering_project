@@ -1,9 +1,9 @@
 <div class="form">
     <h1>Ingresar al sistema</h1>
     <p>Bienvenido de nuevo, aquí puedes ingresar al sistema con tus credenciales correspondientes.</p>
-    <form class="login-form" action="">
-        <input type="text" id="" placeholder="Nombre de usuario">
-        <input type="text" id="" placeholder="Contraseña">
+    <form  [formGroup]="login_form" class="login-form" action="">
+        <input [class.is-invalid]="login_form.get('username').touched && login_form.get('username').invalid" formControlName="username" type="text" placeholder="Nombre de usuario">
+        <input [class.is-invalid]="login_form.get('password').touched && login_form.get('password').invalid" formControlName="password" type="password" placeholder="Contraseña">
         <input type="submit" value="Submit" class="submit">
     </form>
 </div>

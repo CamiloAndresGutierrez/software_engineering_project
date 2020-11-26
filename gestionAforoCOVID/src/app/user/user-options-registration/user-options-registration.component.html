@@ -1,14 +1,14 @@
 <div class="container">
     <div class="role">
-        <button type="button"  routerLinkActive="active"  routerLink="/user-options/registration/citizen/">Ciudadano</button>
-        <button type="button"  routerLinkActive="active" routerLink="/user-options/registration/establishment/">Establecimiento</button>
-        <button type="button" routerLinkActive="active" routerLink="/user-options/registration/health-entity/">Entidad de Salud</button>
+        <button type="button"  routerLinkActive="active"  routerLink="/registration/citizen/">Ciudadano</button>
+        <button type="button"  routerLinkActive="active" routerLink="/registration/establishment/">Establecimiento</button>
+        <button type="button" routerLinkActive="active" routerLink="/registration/health-entity/">Entidad de Salud</button>
     </div>
-    <div class="message" *ngIf="router.url === '/user-options/registration'">
+    <div class="message" *ngIf="router.url === '/registration'">
         <h1>
-            ¡Bienvenido!, aquí puedes registrarte en el sistema, con alguno de los roles indicados arriba.
+            ¡Bienvenido!, aquí puedes registrarte en el sistema con alguno de los roles indicados en los botones de arriba arriba.
         </h1>
         <img src="/assets/registration_.svg" class="hero-image">
     </div>
-</div> 
+</div>
 <router-outlet></router-outlet>
