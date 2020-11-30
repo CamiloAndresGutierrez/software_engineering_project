@@ -14,6 +14,7 @@ CORS(app)
 establishmentCollection = db["establishmentCollection"]
 citizenCollection = db["citizenCollection"]
 healthEntityCollection = db["healthEntityCollection"]
+adminCollection = db['adminCollection']
 
 @app.route("/login", methods=["GET"])
 def main():
@@ -116,18 +117,21 @@ def login():
     isitHE = healthEntityCollection.find_one({"username" : username, "password" : encoded_password})
     isitPE = establishmentCollection.find_one({"username" : username, "password" : encoded_password})
     isitC = citizenCollection.find_one({"username" : username, "password" : encoded_password})
-    
-    flag = True if isitHE == isitPE == isitC == None else False
+    isitA = adminCollection.find_one({"username" : username, "password" : encoded_password})
+    flag = True if isitHE == isitPE == isitC == isitA == None else False
 
     if(not flag):
-        if(isitC != None):
-            token = jwt.encode({"username": isitC['username'], "rol" : rol[1]}, SK, algorithm="HS256").decode('utf-8')
-            return jsonify({"response" :  token})
-        if(isitHE != None):
-            token = jwt.encode({"username": isitHE['username'], "rol" : rol[3]}, SK, algorithm="HS256").decode('utf-8')
+        if(isitA != None):
+            token = jwt.encode({"username": isitPE['username'], "rol" : rol[0], "name": isitPE['name']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
+        if(isitC != None):
+            token = jwt.encode({"username": isitC['username'], "rol" : rol[1], "name": isitC['name']}, SK, algorithm="HS256").decode('utf-8')
+            return jsonify({"response" :  token})
         if(isitPE != None):
-            token = jwt.encode({"username": isitPE['username'], "rol" : rol[2]}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitPE['username'], "rol" : rol[2], "name": isitPE['name']}, SK, algorithm="HS256").decode('utf-8')
+            return jsonify({"response" : token})
+        if(isitHE != None):
+            token = jwt.encode({"username": isitHE['username'], "rol" : rol[3], "name": isitHE['name']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
     else: 
         return jsonify({"response" : "404"})

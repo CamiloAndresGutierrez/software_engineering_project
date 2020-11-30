@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-navbar',
@@ -7,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService : CookieService) { }
+  
+  token : string;
 
   citizen : boolean;
   establishment : boolean; 
   healthEntity : boolean;
   admin : boolean;
-  name : string = "John Doe";
+  name : string = "";
 
   flag: boolean=false;
 
@@ -26,21 +31,43 @@ export class UserNavbarComponent implements OnInit {
   }
 
   isCitizen(){
-    return this.citizen = true;
+    return this.citizen;
   }
 
   isEstablishment(){
-    return this.establishment = false;
+    return this.establishment;
   }
 
   isHealthEntity(){
-    return this.healthEntity = false;
+    return this.healthEntity;
   }
 
   isAdmin(){
-    return this.admin = false;
+    return this.admin;
   }
 
+  ROL = ["ADMIN", "CITIZEN", "PUB_EST", "HEALTH_ENT"]
+
   ngOnInit(): void {
+    
+    this.token = this.cookieService.get('token');
+    let decoded_ = jwtDecode(this.token);
+    if(decoded_['rol'] == "CITIZEN"){
+      this.citizen = true;
+      this.name = decoded_['name']
+    }
+    else if (decoded_['rol'] == "ADMIN"){
+      this.admin = true;
+      this.name = decoded_['name']
+    }
+    else if (decoded_['rol'] == "PUB_EST"){
+      this.establishment = true;
+      this.name = decoded_['name']
+    }
+    else {
+      this.healthEntity = true;
+      this.name = decoded_['name']
+    }
   }
+
 }
