@@ -19,6 +19,7 @@ import { UserNavbarComponent } from './user-profile/user-navbar/user-navbar.comp
 import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
 import { DashboardGuard, MainGuard } from './authentication.guard';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     DashboardGuard,

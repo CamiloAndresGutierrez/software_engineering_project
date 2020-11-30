@@ -1,12 +1,12 @@
 <div class="form">
     <h1>Registro de Entidad de salud</h1>
-    <form class="registration-form" action="">
-        <input type="text" id="" placeholder="NIT">
-        <input type="text" id="" placeholder="Nombre">
-        <input type="text" id="" placeholder="Número telefónico">
-        <input type="text" id="" placeholder="Correo electrónico">
-        <input type="text" id="" placeholder="Username">
-        <input type="text" id="" placeholder="Contraseña">
+    <form [formGroup]="healthEnt" class="registration-form" action="">
+        <input formControlName="NIT" type="text" id="" placeholder="NIT">
+        <input formControlName="name" type="text" id="" placeholder="Nombre">
+        <input formControlName="phone" type="text" id="" placeholder="Número telefónico">
+        <input formControlName="email" type="text" id="" placeholder="Correo electrónico">
+        <input formControlName="username" type="text" id="" placeholder="Username">
+        <input formControlName="password" type="password" id="" placeholder="Contraseña">
 
         <div class="municipality">
             <select name="Departamento" id="">
@@ -22,9 +22,8 @@
                 <option value="Barrio">Barrio</option>
                 
             </select>
-            <input type="text" id="" placeholder="Dirección">
+            <input formControlName="address" type="text" id="" placeholder="Dirección">
         </div>
-
-        <input type="submit" value="Submit" class="submit">
+        <input type="submit" value="Submit" class="submit" (click)="registerHealthEntity()">
     </form>
 </div>

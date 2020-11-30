@@ -1,21 +1,21 @@
 <div class="form">
     <h1>Registro de Ciudadano</h1>
-    <form class="registration-form" action="">
-        <input type="text" id="" placeholder="Nombres">
-        <input type="text" id="" placeholder="Apellidos">
-        <input type="text" id="" placeholder="Username">
-        <input type="text" id="" placeholder="Contraseña">
+    <form [formGroup]="citizenRegistration" class="registration-form" action="">
+        <input formControlName="name" type="text" id="" placeholder="Nombres">
+        <input formControlName="surname" type="text" id="" placeholder="Apellidos">
+        <input formControlName="username" type="text" id="" placeholder="Username">
+        <input formControlName="password" type="password" id="" placeholder="Contraseña">
         <div class="documentation">
             <select name="Tipo documento" id="">
                 <option value="Tipo de documento">Tipo de documento</option>
             </select>
-            <input type="text" placeholder="Número documento">
+            <input formControlName="id" type="text" placeholder="Número documento">
         </div>
-        <select name="Género" id="">
-            <option value="Género">Género</option>
-            <option value="M">M</option>
-            <option value="F">F</option>
-            <option value="O">O</option>
+        <label for="gender">Género: </label>
+        <select class="gender" formControlName="gender">
+            <option *ngFor="let g of getGenders()" [ngValue]="g">
+                {{ g }}
+            </option>
         </select>
         <div class="municipality">
             <select name="Departamento" id="">
@@ -31,9 +31,9 @@
                 <option value="Barrio">Barrio</option>
                 
             </select>
-            <input type="text" id="" placeholder="Dirección">
+            <input formControlName="address" type="text" id="" placeholder="Dirección">
         </div>
 
-        <input type="submit" value="Submit" class="submit">
+        <input type="submit" value="Submit" class="submit" (click)="registerCitizen()">
     </form>
 </div>

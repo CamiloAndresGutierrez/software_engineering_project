@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gestionAforoCOVID"
+    }
+  },
+  "defaultProject": "gestionAforoCOVID",
+  "cli": {
+    "analytics": "7da270a2-6665-4276-b325-74d35864c44b"
+  }
 }
