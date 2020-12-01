@@ -36,7 +36,7 @@ export class HealthEntityComponent implements OnInit {
         alert("No se ha podido realizar el registro del usuario");
       }
       else{
-        alert("El username ya está siendo usado, escoja otro");
+        alert("Ya existe una entidad de salud con el username o NIT ingresados");
       }
     })
   }

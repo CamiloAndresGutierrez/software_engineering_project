@@ -54,19 +54,15 @@ export class UserNavbarComponent implements OnInit {
     let decoded_ = jwtDecode(this.token);
     if(decoded_['rol'] == "CITIZEN"){
       this.citizen = true;
-      this.name = decoded_['name']
     }
     else if (decoded_['rol'] == "ADMIN"){
       this.admin = true;
-      this.name = decoded_['name']
     }
     else if (decoded_['rol'] == "PUB_EST"){
       this.establishment = true;
-      this.name = decoded_['name']
     }
     else {
       this.healthEntity = true;
-      this.name = decoded_['name']
     }
   }
 

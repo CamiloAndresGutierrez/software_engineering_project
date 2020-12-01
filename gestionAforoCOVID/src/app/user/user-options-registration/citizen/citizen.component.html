@@ -5,9 +5,12 @@
         <input formControlName="surname" type="text" id="" placeholder="Apellidos">
         <input formControlName="username" type="text" id="" placeholder="Username">
         <input formControlName="password" type="password" id="" placeholder="Contraseña">
-        <div class="documentation">
-            <select name="Tipo documento" id="">
-                <option value="Tipo de documento">Tipo de documento</option>
+        <label for="document">Tipo de documento:</label>
+        <div class="documentation" name ="document">
+            <select formControlName="document" name="Tipo_documento" id="">
+                <option *ngFor="let d of getDocuments()" [ngValue]="d" class="document_type" value="Tipo de documento">
+                    {{d}}
+                </option>
             </select>
             <input formControlName="id" type="text" placeholder="Número documento">
         </div>

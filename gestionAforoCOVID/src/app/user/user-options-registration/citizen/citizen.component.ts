@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ParametersService } from 'src/app/services/parameters.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class CitizenComponent implements OnInit {
 
   private genders = ["Masculino", "Femenino", "Otro"]
+  private document_types : any;
 
   citizenRegistration = new FormGroup({
     name : new FormControl('', Validators.required),
@@ -18,13 +20,17 @@ export class CitizenComponent implements OnInit {
     password : new FormControl('', Validators.required),
     id : new FormControl('', Validators.required),
     address : new FormControl('', Validators.required),
-    gender : new FormControl('', Validators.required)
+    gender : new FormControl('', Validators.required),
+    document : new FormControl('', Validators.required)
   })
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private parameterService : ParametersService) { }
 
   ngOnInit(): void {
     
+    this.parameterService.getDocuments().then(result =>{
+      this.document_types = result;
+    })
   }
 
   private info = "";
@@ -39,13 +45,17 @@ export class CitizenComponent implements OnInit {
         alert("No se ha podido realizar el registro del usuario");
       }
       else{
-        alert("El username ya está siendo usado, escoja otro");
+        alert("Ya existe un usuario con el username o número de documento ingresados");
       }
     })
   }
 
   getGenders(){
     return this.genders;
+  }
+
+  getDocuments(){
+    return this.document_types;
   }
 
 }

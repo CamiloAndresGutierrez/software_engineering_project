@@ -31,7 +31,7 @@ input {
     right: 0;
     text-align: center;
     width: 35%;
-    height: 34.375rem;
+    height: 37.5rem;
     margin-top: 8.125rem;
     background-color: white;
     border-radius: 2rem;    
@@ -40,6 +40,7 @@ input {
         0 6.7px 5.3px rgba(0, 0, 0, 0.048),
         0 12.5px 10px rgba(0, 0, 0, 0.06),
         0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+    font-size : 0.75rem;
     @include breakpoints-down(large){
         width: 50%;
     }

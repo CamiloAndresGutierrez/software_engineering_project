@@ -35,7 +35,7 @@ export class EstablishmentComponent implements OnInit {
         alert("No se ha podido realizar el registro del usuario");
       }
       else{
-        alert("El username ya está siendo usado, escoja otro");
+        alert("Ya existe un establecimiento con el username o NIT ingresados");
       }
     })
   }

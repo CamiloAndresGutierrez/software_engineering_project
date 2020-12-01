@@ -37,10 +37,13 @@ def estRegistration():
     valid_username_PE = establishmentCollection.find_one({"username" : username})
     valid_username_HE = healthEntityCollection.find_one({"username" : username})
     valid_username_cit = citizenCollection.find_one({"username" : username})
+    valid_username_Admin = adminCollection.find_one({"username" : username})
 
-    flag = True if valid_username_HE == valid_username_PE == valid_username_cit == None else False
-
-    if(flag):
+    valid_id = establishmentCollection.find_one({"nit" : nit})
+    
+    flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
+    flag2 = True if valid_id == None else False
+    if(flag and flag2):
         if(registeredUser != None):
             return {"response" : "failed"}
         else:
@@ -59,6 +62,7 @@ def citRegistration():
     id_ = req_['id']
     address = req_['address']
     gender = req_['gender']
+    document = req_['document']
     encoded_password = jwt.encode({"password":password}, SK, algorithm="HS256").decode('utf-8')
     
     registeredUser = citizenCollection.find_one({"username" : username , "id" : id_})
@@ -66,14 +70,18 @@ def citRegistration():
     valid_username_PE = establishmentCollection.find_one({"username" : username})
     valid_username_HE = healthEntityCollection.find_one({"username" : username})
     valid_username_cit = citizenCollection.find_one({"username" : username})
+    valid_username_Admin = adminCollection.find_one({"username" : username})
 
-    flag = True if valid_username_HE == valid_username_PE == valid_username_cit == None else False
+    valid_id = citizenCollection.find_one({"id" : id_})
+    
+    flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
+    flag2 = True if valid_id == None else False
 
-    if(flag):
+    if(flag and flag2):
         if(registeredUser != None):
             return {"response" : "failed"}
         else:
-            citizenCollection.insert_one({"name":name, "surname": surname, "username":username, "password" : encoded_password, "gender": gender, "document" : "" ,"id" : id_, "department" : "" , "municipality" : "" , "neighbourhood" : "" , "address": address})
+            citizenCollection.insert_one({"name":name, "surname": surname, "username":username, "password" : encoded_password, "gender": gender, "document" : document ,"id" : id_, "department" : "" , "municipality" : "" , "neighbourhood" : "" , "address": address})
             return {"response" : "success"} 
     else:
         return {"response":"username_failed"}
@@ -95,10 +103,14 @@ def healthEntityRegistration():
     valid_username_PE = establishmentCollection.find_one({"username" : username})
     valid_username_HE = healthEntityCollection.find_one({"username" : username})
     valid_username_cit = citizenCollection.find_one({"username" : username})
+    valid_username_Admin = adminCollection.find_one({"username" : username})
 
-    flag = True if valid_username_HE == valid_username_PE == valid_username_cit == None else False
+    valid_id = healthEntityCollection.find_one({"nit" : nit})
 
-    if(flag):
+    flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
+    flag2 = True if valid_id == None else False
+
+    if(flag and flag2):
         if(registeredUser != None):
             return {"response" : "failed"}
         else:
@@ -122,7 +134,7 @@ def login():
 
     if(not flag):
         if(isitA != None):
-            token = jwt.encode({"username": isitPE['username'], "rol" : rol[0], "name": isitPE['name']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitA['username'], "rol" : rol[0], "name": isitA['name'], "id": isitA['id']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
         if(isitC != None):
             token = jwt.encode({"username": isitC['username'], "rol" : rol[1], "name": isitC['name']}, SK, algorithm="HS256").decode('utf-8')

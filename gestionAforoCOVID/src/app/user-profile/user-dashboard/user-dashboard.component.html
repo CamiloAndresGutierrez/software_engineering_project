@@ -3,7 +3,9 @@
 <div class="jumbotron" *ngIf="router.url === '/dashboard'" >
     <h1>Bienvenido, {{name}} </h1>
     <p>En la barra de navegación de arriba, podrás ver las opciones que tienes como {{rol}}</p>
-    
+</div>
+<div class="image" *ngIf="router.url === '/dashboard'">
+    <img src="/assets/dashboard.svg" alt="">
 </div>
 
 <router-outlet></router-outlet>

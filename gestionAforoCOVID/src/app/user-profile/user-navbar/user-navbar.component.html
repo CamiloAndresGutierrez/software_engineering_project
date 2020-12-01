@@ -14,7 +14,7 @@
         <a class="test" href="#">Historial</a>
         <a class="about-us" href="#">Prueba</a>
         <a class="login" href="#">Código QR</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isEstablishment()">
@@ -22,13 +22,13 @@
         <a class="about-us" href="#">Visita con QR</a>
         <a class="login" href="#">Visita manual</a>
         <a class="login" href="#">Visita a destiempo</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isHealthEntity()">
         <a class="home" href="#">Historial</a>
         <a class="about-us" href="#">Prueba nueva</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isAdmin()">
@@ -37,7 +37,7 @@
         <a class="login" href="#">Crear Admin</a>
         <a class="login" href="#">Reportes</a>
         <a class="login" href="#">Parámetros</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
     
         
@@ -48,7 +48,7 @@
         <a class="test" href="#">Historial</a>
         <a class="about-us" href="#">Prueba</a>
         <a class="login" href="#">Código QR</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
     
     <div *ngIf="isEstablishment()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
@@ -56,13 +56,13 @@
         <a class="about-us" href="#">Visita con QR</a>
         <a class="login" href="#">Visita manual</a>
         <a class="login" href="#">Visita a destiempo</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
 
     <div *ngIf="isHealthEntity()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
         <a class="home" href="#">Historial</a>
         <a class="about-us" href="#">Prueba nueva</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
 
     <div *ngIf="isAdmin()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
@@ -71,6 +71,6 @@
         <a class="login" href="#">Crear Admin</a>
         <a class="login" href="#">Reportes</a>
         <a class="login" href="#">Parámetros</a>
-        <a class="register" href="#">{{name}}</a>
+        <a class="register" href="#">Perfil</a>
     </div>
 </div>

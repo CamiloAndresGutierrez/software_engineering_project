@@ -3,8 +3,23 @@
 @import "src/scss/_variables.scss";
 
 .jumbotron{
-    padding: 10px 100px;
-    margin-top: 20px;
+    padding: 0.625rem 6.25rem;
+    margin-top: 1.25rem;
     background-color: white;
-
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06);
+    @include breakpoints-down(medium){
+        padding: 0.625rem 3.125rem;
+    }
+}
+.image{
+    text-align: center;
+    >img{
+        width: 50%;
+        @include breakpoints-down(medium){
+            width: 80%;
+        }
+    }
 }
