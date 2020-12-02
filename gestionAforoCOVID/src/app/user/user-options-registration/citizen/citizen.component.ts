@@ -12,6 +12,9 @@ export class CitizenComponent implements OnInit {
 
   private genders = ["Masculino", "Femenino", "Otro"]
   private document_types : any;
+  private departments : any;
+  private municipalities : any;
+  private  neighborhoods : any ; 
 
   citizenRegistration = new FormGroup({
     name : new FormControl('', Validators.required),
@@ -21,7 +24,10 @@ export class CitizenComponent implements OnInit {
     id : new FormControl('', Validators.required),
     address : new FormControl('', Validators.required),
     gender : new FormControl('', Validators.required),
-    document : new FormControl('', Validators.required)
+    document : new FormControl('', Validators.required),
+    departments : new FormControl('', Validators.required),
+    municipalities : new FormControl('', Validators.required),
+    neighborhoods : new FormControl('', Validators.required)
   })
 
   constructor(private userService : UserService, private parameterService : ParametersService) { }
@@ -30,6 +36,15 @@ export class CitizenComponent implements OnInit {
     
     this.parameterService.getDocuments().then(result =>{
       this.document_types = result;
+    })
+    this.parameterService.getDepartments().then(result =>{
+      this.departments = result;
+    })
+    this.parameterService.getmunicipalities().then(result =>{
+      this.municipalities = result;
+    })
+    this.parameterService.getNeighborhoods().then(result =>{
+      this.neighborhoods = result;
     })
   }
 
@@ -56,6 +71,18 @@ export class CitizenComponent implements OnInit {
 
   getDocuments(){
     return this.document_types;
+  }
+
+  getDepartments(){
+    return this.departments;
+  }
+
+  getMunicipalities(){
+    return this.municipalities;
+  }
+
+  getNeighborhoods(){
+    return this.neighborhoods;
   }
 
 }

@@ -1,29 +1,39 @@
 <div class="form">
     <h1>Registro de Entidad de salud</h1>
     <form [formGroup]="healthEnt" class="registration-form" action="">
-        <input formControlName="NIT" type="text" id="" placeholder="NIT">
-        <input formControlName="name" type="text" id="" placeholder="Nombre">
-        <input formControlName="phone" type="text" id="" placeholder="Número telefónico">
-        <input formControlName="email" type="text" id="" placeholder="Correo electrónico">
-        <input formControlName="username" type="text" id="" placeholder="Username">
-        <input formControlName="password" type="password" id="" placeholder="Contraseña">
+        <input formControlName="NIT" [class.is-valid]="healthEnt.get('NIT').touched && healthEnt.get('NIT').invalid" type="text" id="" placeholder="NIT">
+        <input formControlName="name" [class.is-valid]="healthEnt.get('name').touched && healthEnt.get('name').invalid" type="text" id="" placeholder="Nombre">
+        <input formControlName="phone" [class.is-valid]="healthEnt.get('phone').touched && healthEnt.get('phone').invalid" type="text" id="" placeholder="Número telefónico">
+        <input formControlName="email" [class.is-valid]="healthEnt.get('email').touched && healthEnt.get('email').invalid" type="text" id="" placeholder="Correo electrónico">
+        <input formControlName="username" [class.is-valid]="healthEnt.get('username').touched && healthEnt.get('username').invalid" type="text" id="" placeholder="Username">
+        <input formControlName="password" [class.is-valid]="healthEnt.get('password').touched && healthEnt.get('password').invalid" type="password" id="" placeholder="Contraseña">
 
         <div class="municipality">
-            <select name="Departamento" id="">
-                <option value="Departamento">Departamento</option>
+            <label for="Departamento">Departamento:</label>
+            <label for="Municipio">Municipio:</label>
+        </div>
+        <div class="municipality">
+            <select formControlName="departments" [class.is-valid]="healthEnt.get('departments').touched && healthEnt.get('departments').invalid" name="Departamento" id="">
+                <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
+                    {{ dep }}
+                </option>
             </select>
-            <select name="Municipio" id="">
-                <option value="Municipio">Municipio</option>
+            <select formControlName="municipalities" [class.is-valid]="healthEnt.get('municipalities').touched && healthEnt.get('municipalities').invalid" name="Municipio" id="">
+                <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
+                    {{ m }}
+                </option>
             </select>
         </div>
 
+        <label for="Barrio">Barrio:</label>
         <div class="address">
-            <select name="Barrio" id="">
-                <option value="Barrio">Barrio</option>
-                
+            <select [class.is-valid]="healthEnt.get('neighborhoods').touched && healthEnt.get('neighborhoods').invalid" formControlName="neighborhoods" name="Barrio" id="">
+                <option *ngFor="let ngh of getNeighborhoods()" [ngValue]="ngh" value="Barrio">
+                    {{ ngh }}
+                </option>
             </select>
-            <input formControlName="address" type="text" id="" placeholder="Dirección">
+            <input [class.is-valid]="healthEnt.get('address').touched && healthEnt.get('address').invalid"  formControlName="address" type="text" id="" placeholder="Dirección">
         </div>
-        <input type="submit" value="Submit" class="submit" (click)="registerHealthEntity()">
+        <input [disabled] = "healthEnt.invalid" type="submit" value="Submit" class="submit" (click)="registerHealthEntity()">
     </form>
 </div>

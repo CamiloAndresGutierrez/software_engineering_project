@@ -72,6 +72,10 @@ input {
     > input {
         width: 50%;
     }
+    > label{
+        width: 50%;
+    }
+    
 }
 
 .submit{
@@ -89,4 +93,8 @@ input {
 
 label {
     text-align: left;
+}
+
+.is-valid{
+    border-color: red; 
 }

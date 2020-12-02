@@ -20,6 +20,9 @@ import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashb
 import { DashboardGuard, MainGuard } from './authentication.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
+import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
+import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
+import { ParametersComponent } from './user-profile/parameters/parameters.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { HttpClientModule } from '@angular/common/http';
     EstablishmentComponent,
     HealthEntityComponent,
     UserNavbarComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    CheckRegistrationComponent,
+    CreateAdminComponent,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,

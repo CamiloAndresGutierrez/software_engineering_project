@@ -31,7 +31,7 @@ input {
     right: 0;
     text-align: center;
     width: 35%;
-    height: 37.5rem;
+    height: 40.625rem;
     margin-top: 8.125rem;
     background-color: white;
     border-radius: 2rem;    
@@ -72,6 +72,9 @@ input {
     > input {
         width: 50%;
     }
+    > label{
+        width: 50%;
+    }
 }
 
 .submit{
@@ -85,4 +88,13 @@ input {
     &:hover{
         background-color: var(--active-dark-blue);
     }
+}
+
+.is-valid{
+    border-color: red;
+}
+
+label{
+    font-size: 12px;
+    text-align: left;
 }

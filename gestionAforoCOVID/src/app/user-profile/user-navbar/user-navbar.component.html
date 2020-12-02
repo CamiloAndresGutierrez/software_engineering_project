@@ -33,10 +33,10 @@
 
     <div class="button-group hide-mobile" *ngIf="isAdmin()">
         <a class="home" href="#">Deshabilitar</a>
-        <a class="about-us" href="#">Evaluar registro</a>
-        <a class="login" href="#">Crear Admin</a>
+        <a class="about-us" href="/dashboard/check-registration">Evaluar registro</a>
+        <a class="login" href="/dashboard/new-admin">Crear Admin</a>
         <a class="login" href="#">Reportes</a>
-        <a class="login" href="#">Parámetros</a>
+        <a class="login" href="/dashboard/parameters">Parámetros</a>
         <a class="register" href="#">Perfil</a>
     </div>
     
@@ -67,10 +67,10 @@
 
     <div *ngIf="isAdmin()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
         <a class="home" href="#">Deshabilitar</a>
-        <a class="about-us" href="#">Evaluar registro</a>
-        <a class="login" href="#">Crear Admin</a>
+        <a class="about-us" href="/dashboard/check-registration">Evaluar registro</a>
+        <a class="login" href="/dashboard/new-admin">Crear Admin</a>
         <a class="login" href="#">Reportes</a>
-        <a class="login" href="#">Parámetros</a>
+        <a class="login" href="/dashboard/parameters">Parámetros</a>
         <a class="register" href="#">Perfil</a>
     </div>
 </div>

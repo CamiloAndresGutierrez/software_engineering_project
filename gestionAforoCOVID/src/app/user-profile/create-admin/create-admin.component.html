@@ -1,0 +1,24 @@
+<div class="jumbotron" >
+    <h1>Crear Admin</h1>
+    <p>Aquí puede crear una nueva cuenta para administrador</p>
+</div>
+
+<div class="form">
+    <h1>Registro de Administrador</h1>
+    <form [formGroup]="adminRegistration" class="registration-form" action="">
+        <input formControlName="name" [class.is-valid]="adminRegistration.get('name').touched && adminRegistration.get('name').invalid" type="text" id="" placeholder="Nombres">
+        <input formControlName="surname" [class.is-valid]="adminRegistration.get('surname').touched && adminRegistration.get('surname').invalid" type="text" id="" placeholder="Apellidos">
+        <input formControlName="username" [class.is-valid]="adminRegistration.get('username').touched && adminRegistration.get('username').invalid" type="text" id="" placeholder="Username">
+        <input formControlName="password" [class.is-valid]="adminRegistration.get('password').touched && adminRegistration.get('password').invalid" type="password" id="" placeholder="Contraseña">
+        <label for="document">Tipo de documento:</label>
+        <div class="documentation" name ="document">
+            <select formControlName="document" [class.is-valid]="adminRegistration.get('document').touched && adminRegistration.get('document').invalid" name="Tipo_documento" id="">
+                <option *ngFor="let d of getDocuments()" [ngValue]="d" class="document_type" value="Tipo de documento">
+                    {{ d }}
+                </option>
+            </select>
+            <input formControlName="id" [class.is-valid]="adminRegistration.get('id').touched && adminRegistration.get('id').invalid" type="text" placeholder="Número documento">
+        </div>
+        <input [disabled]="adminRegistration.invalid" type="submit" value="Submit" class="submit" (click)="registerAdmin()">
+    </form>
+</div>

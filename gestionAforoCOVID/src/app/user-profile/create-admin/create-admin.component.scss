@@ -3,6 +3,19 @@
 @import "src/scss/_variables.scss";
 
 
+.jumbotron{
+    padding: 0.625rem 6.25rem;
+    margin-top: 1.25rem;
+    background-color: white;
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06);
+    @include breakpoints-down(medium){
+        padding: 0.625rem 3.125rem;
+    }
+}
+
 input {
     height:2.1875rem;
     border-radius: 0.3125rem;
@@ -31,8 +44,8 @@ input {
     right: 0;
     text-align: center;
     width: 35%;
-    height: 37.5rem;
-    margin-top: 8.125rem;
+    height: 30rem;
+    margin-top: 4rem;
     background-color: white;
     border-radius: 2rem;    
     box-shadow:
@@ -40,6 +53,7 @@ input {
         0 6.7px 5.3px rgba(0, 0, 0, 0.048),
         0 12.5px 10px rgba(0, 0, 0, 0.06),
         0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+    font-size : 0.75rem;
     @include breakpoints-down(large){
         width: 50%;
     }
@@ -47,7 +61,6 @@ input {
         width: 90%;
     }
 }
-
 
 .address, .documentation{
     display: flex;
@@ -72,10 +85,10 @@ input {
     > input {
         width: 50%;
     }
-    > label {
+    > label{
         width: 50%;
-        font-size: 12px;
     }
+    
 }
 
 .submit{
@@ -91,12 +104,10 @@ input {
     }
 }
 
-
-label{
-    font-size: 12px;
+label {
     text-align: left;
 }
 
 .is-valid{
-    border-color: red;
+    border-color: red; 
 }

@@ -1,42 +1,51 @@
 <div class="form">
     <h1>Registro de Ciudadano</h1>
     <form [formGroup]="citizenRegistration" class="registration-form" action="">
-        <input formControlName="name" type="text" id="" placeholder="Nombres">
-        <input formControlName="surname" type="text" id="" placeholder="Apellidos">
-        <input formControlName="username" type="text" id="" placeholder="Username">
-        <input formControlName="password" type="password" id="" placeholder="Contraseña">
+        <input formControlName="name" [class.is-valid]="citizenRegistration.get('name').touched && citizenRegistration.get('name').invalid" type="text" id="" placeholder="Nombres">
+        <input formControlName="surname" [class.is-valid]="citizenRegistration.get('surname').touched && citizenRegistration.get('surname').invalid" type="text" id="" placeholder="Apellidos">
+        <input formControlName="username" [class.is-valid]="citizenRegistration.get('username').touched && citizenRegistration.get('username').invalid" type="text" id="" placeholder="Username">
+        <input formControlName="password" [class.is-valid]="citizenRegistration.get('password').touched && citizenRegistration.get('password').invalid" type="password" id="" placeholder="Contraseña">
         <label for="document">Tipo de documento:</label>
         <div class="documentation" name ="document">
-            <select formControlName="document" name="Tipo_documento" id="">
+            <select formControlName="document" [class.is-valid]="citizenRegistration.get('document').touched && citizenRegistration.get('document').invalid" name="Tipo_documento" id="">
                 <option *ngFor="let d of getDocuments()" [ngValue]="d" class="document_type" value="Tipo de documento">
-                    {{d}}
+                    {{ d }}
                 </option>
             </select>
-            <input formControlName="id" type="text" placeholder="Número documento">
+            <input formControlName="id" [class.is-valid]="citizenRegistration.get('id').touched && citizenRegistration.get('id').invalid" type="text" placeholder="Número documento">
         </div>
         <label for="gender">Género: </label>
-        <select class="gender" formControlName="gender">
+        <select class="gender" formControlName="gender" [class.is-valid]="citizenRegistration.get('gender').touched && citizenRegistration.get('gender').invalid">
             <option *ngFor="let g of getGenders()" [ngValue]="g">
                 {{ g }}
             </option>
         </select>
+        <div class="municipality labels">
+            <label for="Departamento">Departamento:</label>
+            <label for="Municipio">Municipio:</label>
+        </div>
         <div class="municipality">
-            <select name="Departamento" id="">
-                <option value="Departamento">Departamento</option>
+            <select formControlName="departments" [class.is-valid]="citizenRegistration.get('departments').touched && citizenRegistration.get('departments').invalid" name="Departamento" id="">
+                <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
+                    {{ dep }}
+                </option>
             </select>
-            <select name="Municipio" id="">
-                <option value="Municipio">Municipio</option>
+            <select formControlName="municipalities" [class.is-valid]="citizenRegistration.get('municipalities').touched && citizenRegistration.get('municipalities').invalid" name="Municipio" id="">
+                <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
+                    {{ m }}
+                </option>
             </select>
         </div>
-
-        <div class="address">
-            <select name="Barrio" id="">
-                <option value="Barrio">Barrio</option>
+        <label for="Neighborhoods">Barrio:</label>
+        <div class="address" name="Neighborhoods">
+            <select name="Barrio" formControlName="neighborhoods" [class.is-valid]="citizenRegistration.get('neighborhoods').touched && citizenRegistration.get('neighborhoods').invalid">
+                <option *ngFor="let n of getNeighborhoods()" [ngValue]="n" value="Barrio">
+                    {{ n }}
+                </option>
                 
             </select>
-            <input formControlName="address" type="text" id="" placeholder="Dirección">
+            <input formControlName="address" [class.is-valid]="citizenRegistration.get('address').touched && citizenRegistration.get('address').invalid" type="text" id="" placeholder="Dirección">
         </div>
-
-        <input type="submit" value="Submit" class="submit" (click)="registerCitizen()">
+        <input [disabled]="citizenRegistration.invalid" type="submit" value="Submit" class="submit" (click)="registerCitizen()">
     </form>
 </div>

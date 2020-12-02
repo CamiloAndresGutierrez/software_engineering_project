@@ -40,5 +40,37 @@ export class UserService {
       });
     });
   }
+  
+  public sendAdminInfo(adminInfo:FormGroup): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/add/admin", adminInfo.value , {}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public get_pending(): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.get("http://localhost:5000/get/pending").subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public accept_pending(nit : string): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/accept/pending", {"NIT" : nit}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public reject_pending(nit : string): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/reject/pending", {"NIT" : nit}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
 
 }

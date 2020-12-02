@@ -1,0 +1,27 @@
+<div class="jumbotron" >
+    <h1>Evaluar registro</h1>
+    <p>Aquí aprobar o rechazar las solicitues de registro de los establecimientos públicos y entidades de salud</p>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>E-mail</th>
+            <th>ROL</th>
+            <th>Categoría</th>
+            <th>Veredicto</th>
+        </tr>
+        <tr *ngFor="let rows of get_accounts()" >
+            <td *ngFor="let cols of rows" >
+                {{ cols}}
+            </td>
+            <td>
+                <button (click)="accept_account(rows[1], rows[0])" class="button accept">Aceptar</button>
+                <button (click)="reject_account(rows[1], rows[0])" class="button reject">Rechazar</button>
+            </td>
+        </tr>
+        
+    </table>
+</div>

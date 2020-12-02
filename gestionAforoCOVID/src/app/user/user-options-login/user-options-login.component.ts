@@ -20,8 +20,6 @@ export class UserOptionsLoginComponent implements OnInit {
 
   constructor(private userService: UserService, private cookieService: CookieService) { }
 
-
-
   ngOnInit(): void {
   }
 
@@ -32,7 +30,7 @@ export class UserOptionsLoginComponent implements OnInit {
         alert("Las credenciales no son válidas, intente de nuevo");
       }
       else{
-        this.cookieService.set('token', this.info);
+        this.cookieService.set('token', this.info, {path : "/"});
         location.reload();
       }
     });
