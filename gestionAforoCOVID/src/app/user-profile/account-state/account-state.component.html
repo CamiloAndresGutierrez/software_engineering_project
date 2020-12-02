@@ -1,0 +1,39 @@
+<div class="jumbotron" >
+    <h1>Deshabilitar cuentas</h1>
+    <p>Aquí puede deshabilitar o habilitar cuentas de establecimientos públicos y entidades de salud.</p>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>E-mail</th>
+            <th>ROL</th>
+            <th>Categoría</th>
+            <th>Veredicto</th>
+        </tr>
+        <tr *ngFor="let acc of get_accounts_()">
+            <td >
+               {{ acc[2] }}
+            </td>
+            <td >
+               {{ acc[3] }}
+            </td>
+            <td >
+               {{ acc[4] }}
+            </td>
+            <td >
+               {{ acc[5] }}
+            </td>
+            <td >
+               {{ acc[6] }}
+            </td>
+            <td>
+                <button (click)="manage_account(acc[3], acc[0], 'accepted')" *ngIf="acc[1] == 'inactive'" class="button accept">Habilitar</button>
+                <button (click)="manage_account(acc[3], acc[0], 'inactive')" *ngIf="acc[1] == 'accepted'" class="button reject">Deshabilitar</button>
+            </td>
+        </tr>
+        
+    </table>
+</div>

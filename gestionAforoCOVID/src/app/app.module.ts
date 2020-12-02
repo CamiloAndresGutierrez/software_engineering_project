@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
+import { AccountStateComponent } from './user-profile/account-state/account-state.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ParametersComponent } from './user-profile/parameters/parameters.compon
     UserDashboardComponent,
     CheckRegistrationComponent,
     CreateAdminComponent,
-    ParametersComponent
+    ParametersComponent,
+    AccountStateComponent
   ],
   imports: [
     BrowserModule,

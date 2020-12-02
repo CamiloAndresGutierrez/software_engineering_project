@@ -73,4 +73,20 @@ export class UserService {
     });
   }
 
+  public get_accounts(): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.get("http://localhost:5000/user-state").subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public manage_account(nit : string, username : string, veredict: string): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/user-state", {"NIT" : nit, "username": username, "veredict" : veredict}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
 }

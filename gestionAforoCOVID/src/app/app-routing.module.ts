@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardGuard , MainGuard } from './authentication.guard';
 import { LangingPageComponent } from './landing-page/langing-page/langing-page.component';
 import { MainComponent } from './landing-page/main/main.component';
+import { AccountStateComponent } from './user-profile/account-state/account-state.component';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
@@ -66,6 +67,10 @@ const routes: Routes = [
       {
         path : "parameters",
         component : ParametersComponent,
+      },
+      {
+        path: "accounts",
+        component : AccountStateComponent
       }
   ]
   }
