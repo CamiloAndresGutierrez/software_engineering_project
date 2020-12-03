@@ -20,8 +20,8 @@
     <div class="button-group hide-mobile" *ngIf="isEstablishment()">
         <a class="home" href="#"> Historial</a>
         <a class="about-us" href="#">Visita con QR</a>
-        <a class="login" href="#">Visita manual</a>
-        <a class="login" href="#">Visita a destiempo</a>
+        <a class="login" href="/dashboard/manual-visit">Visita manual</a>
+        <a class="login" href="/dashboard/untimely-visit">Visita a destiempo</a>
         <a class="register" href="#">Perfil</a>
     </div>
 
@@ -54,8 +54,8 @@
     <div *ngIf="isEstablishment()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
         <a class="home" href="#"> Historial</a>
         <a class="about-us" href="#">Visita con QR</a>
-        <a class="login" href="#">Visita manual</a>
-        <a class="login" href="#">Visita a destiempo</a>
+        <a class="login" href="/dashboard/manual-visit">Visita manual</a>
+        <a class="login" href="/dashboard/untimely-visit">Visita a destiempo</a>
         <a class="register" href="#">Perfil</a>
     </div>
 

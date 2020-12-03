@@ -185,13 +185,13 @@ def login():
             token = jwt.encode({"username": isitA['username'], "rol" : rol[0], "name": isitA['name'], "id": isitA['id']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
         if(isitC != None):
-            token = jwt.encode({"username": isitC['username'], "rol" : rol[1], "name": isitC['name']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitC['username'], "rol" : rol[1], "name": isitC['name'], "id": isitC['id']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" :  token})
         if(isitPE != None):
-            token = jwt.encode({"username": isitPE['username'], "rol" : rol[2], "name": isitPE['name']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitPE['username'], "rol" : rol[2], "name": isitPE['name'], "id" : isitPE['nit']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
         if(isitHE != None):
-            token = jwt.encode({"username": isitHE['username'], "rol" : rol[3], "name": isitHE['name']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitHE['username'], "rol" : rol[3], "name": isitHE['name'], "id" : isitHE['nit']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
     else: 
         return jsonify({"response" : "404"})
@@ -243,8 +243,6 @@ def user_state():
         establishmentCollection.update_one({"nit": nit, "username":username}, {"$set" : {"veredict":veredict}})
         healthEntityCollection.update_one({"nit": nit, "username":username}, {"$set" : {"veredict":veredict}})
         return jsonify({"response" : "success"})
-
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

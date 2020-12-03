@@ -6,7 +6,9 @@ import { MainComponent } from './landing-page/main/main.component';
 import { AccountStateComponent } from './user-profile/account-state/account-state.component';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
+import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
+import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-visit.component';
 import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
 import { UserOptionsLoginComponent } from './user/user-options-login/user-options-login.component';
 import { UserOptionsMainComponent } from './user/user-options-main/user-options-main.component';
@@ -71,6 +73,14 @@ const routes: Routes = [
       {
         path: "accounts",
         component : AccountStateComponent
+      },
+      {
+        path : "manual-visit",
+        component : ManualVisitComponent,
+      },
+      {
+        path : "untimely-visit",
+        component : UntimelyVisitComponent
       }
   ]
   }

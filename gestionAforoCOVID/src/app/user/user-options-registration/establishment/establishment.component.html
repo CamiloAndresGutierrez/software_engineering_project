@@ -21,12 +21,12 @@
         <div class="municipality">
             <select formControlName="departments" [class.is-valid]="establishmentRegistration.get('departments').touched && establishmentRegistration.get('departments').invalid" name="Departamento" id="">
                 <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
-                    {{ dep }}
+                    {{ dep[0] }}
                 </option>
             </select>
             <select formControlName="municipalities" [class.is-valid]="establishmentRegistration.get('municipalities').touched && establishmentRegistration.get('municipalities').invalid" name="Municipio" id="">
                 <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
-                    {{ m }}
+                    {{ m[0] }}
                 </option>
             </select>
         </div>

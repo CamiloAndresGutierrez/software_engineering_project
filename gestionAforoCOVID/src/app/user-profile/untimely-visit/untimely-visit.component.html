@@ -1,0 +1,73 @@
+<div class="jumbotron" >
+    <h1>Visita a destiempo</h1>
+    <p>Aquí puede registrar las visitas que no pudieron ser registradas al momento de llegada del ciudadano.</p>
+</div>
+<div class="form">
+    <h1>Visita a destiempo</h1>
+    <form [formGroup]="untimely_visit" class="registration-form" action="">
+        <input formControlName="name" [class.is-valid]="untimely_visit.get('name').touched && untimely_visit.get('name').invalid" type="text" id="" placeholder="Nombres">
+        <input formControlName="surname" [class.is-valid]="untimely_visit.get('surname').touched && untimely_visit.get('surname').invalid" type="text" id="" placeholder="Apellidos">
+        <input formControlName="username" [class.is-valid]="untimely_visit.get('username').touched && untimely_visit.get('username').invalid" type="text" id="" placeholder="Username">
+        <label for="document">Tipo de documento:</label>
+        <div class="documentation" name ="document">
+            <select formControlName="document" [class.is-valid]="untimely_visit.get('document').touched && untimely_visit.get('document').invalid" name="Tipo_documento" id="">
+                <option *ngFor="let d of getDocuments()" [ngValue]="d" class="document_type" value="Tipo de documento">
+                    {{ d }}
+                </option>
+            </select>
+            <input formControlName="id" [class.is-valid]="untimely_visit.get('id').touched && untimely_visit.get('id').invalid" type="number" placeholder="Número documento">
+        </div>
+        <label for="gender">Género: </label>
+        <select class="gender" formControlName="gender" [class.is-valid]="untimely_visit.get('gender').touched && untimely_visit.get('gender').invalid">
+            <option *ngFor="let g of getGenders()" [ngValue]="g">
+                {{ g }}
+            </option>
+        </select>
+        <div class="municipality labels">
+            <label for="Departamento">Departamento:</label>
+            <label for="Municipio">Municipio:</label>
+        </div>
+        <div class="municipality">
+            <select formControlName="departments" [class.is-valid]="untimely_visit.get('departments').touched && untimely_visit.get('departments').invalid" name="Departamento" id="">
+                <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
+                    {{ dep[0] }}
+                </option>
+            </select>
+            <select formControlName="municipalities" [class.is-valid]="untimely_visit.get('municipalities').touched && untimely_visit.get('municipalities').invalid" name="Municipio" id="">
+                <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
+                    {{ m[0] }}
+                </option>
+            </select>
+        </div>
+        <label for="Neighborhoods">Barrio:</label>
+        <div class="address" name="Neighborhoods">
+            <select name="Barrio" formControlName="neighborhoods" [class.is-valid]="untimely_visit.get('neighborhoods').touched && untimely_visit.get('neighborhoods').invalid">
+                <option *ngFor="let n of getNeighborhoods()" [ngValue]="n" value="Barrio">
+                    {{ n }}
+                </option>
+            </select>
+            <input formControlName="address" [class.is-valid]="untimely_visit.get('address').touched && untimely_visit.get('address').invalid" type="text" id="" placeholder="Dirección">
+        </div>
+        <label for="mask_option">Tapabocas: </label>
+        <div class="entry-conditions">
+            <select formControlName="mask" name="mask_option" id="">
+                <option *ngFor="let m of get_mask_options()" [ngValue]="m">
+                    {{ m }}
+                </option>
+            </select>
+            <input formControlName="temperature" type="number" value="Temperatura" placeholder="Temperatura">
+        </div>
+        <div class="municipality labels">
+            <label for="time_input">Fecha:</label>
+            <label for="date_input">Hora:</label>
+        </div>
+        <div class="date-time">
+            <input name="date_input" formControlName="date" type="date">
+            <input name="time_input" formControlName="time" type="time">
+        </div>
+
+        <!--{{ untimely_visit.value | json }}-->
+
+        <input (click)="register_visit()" [disabled]="untimely_visit.invalid" type="submit" value="Submit" class="submit" >
+    </form>
+</div>

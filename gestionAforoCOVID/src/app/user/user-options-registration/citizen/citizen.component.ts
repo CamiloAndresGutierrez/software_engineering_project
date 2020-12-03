@@ -21,7 +21,7 @@ export class CitizenComponent implements OnInit {
     surname : new FormControl('', Validators.required),
     username : new FormControl('', Validators.required),
     password : new FormControl('', Validators.required),
-    id : new FormControl('', Validators.required),
+    id : new FormControl('', [Validators.required, Validators.min(0)]),
     address : new FormControl('', Validators.required),
     gender : new FormControl('', Validators.required),
     document : new FormControl('', Validators.required),

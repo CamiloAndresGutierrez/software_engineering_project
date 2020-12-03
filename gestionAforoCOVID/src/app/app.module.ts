@@ -24,6 +24,8 @@ import { CheckRegistrationComponent } from './user-profile/check-registration/ch
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
 import { AccountStateComponent } from './user-profile/account-state/account-state.component';
+import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
+import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-visit.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { AccountStateComponent } from './user-profile/account-state/account-stat
     CheckRegistrationComponent,
     CreateAdminComponent,
     ParametersComponent,
-    AccountStateComponent
+    AccountStateComponent,
+    ManualVisitComponent,
+    UntimelyVisitComponent
   ],
   imports: [
     BrowserModule,
