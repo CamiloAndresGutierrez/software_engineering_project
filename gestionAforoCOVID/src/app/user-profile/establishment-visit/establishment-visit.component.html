@@ -1,1 +1,55 @@
-<p>establishment-visit works!</p>
+<div class="jumbotron" >
+    <h1>Historial</h1>
+    <p>Aquí puede revisar el historial de las visitas a Establecimientos públicos</p>
+</div>
+<div class="filters">
+    <div class="date-picker" [formGroup]="citizen_visit">
+        <input formControlName="date" class="date_" type="date" name="" id="">
+        <button [disabled]="citizen_visit.invalid" class="filter" (click)="setDate()">Filtrar</button>
+    </div>
+    <div class="date-picker" [formGroup]="citizen_id">
+        <input formControlName="id" class="cit-id" type="number" name="" id="">
+        <button [disabled]="citizen_id.invalid"  class="filter" (click)="setID()">Filtrar</button>
+    </div>
+    <div class="date-picker" [formGroup]="citizen_time">
+        <input formControlName="time" class="date_" type="time" name="" id="">
+        <button [disabled]="citizen_time.invalid"  class="filter" (click)="setTime()">Filtrar</button>
+    </div>
+    <div class="date-picker" [formGroup]="citizen_entry">
+        <select formControlName="entry" name="" id="">
+            <option *ngFor="let e of getEntryOptions()" [ngValue]="e">
+                {{ e }}
+            </option>
+        </select>
+        <button [disabled]="citizen_entry.invalid"  class="filter" (click)="setEntry()">Filtrar</button>
+    </div>
+    <div class="date-picker">
+        <button class="filter-delete" (click)="deleteFilter()">Borrar filtros</button>
+    </div>
+</div>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Tipo de document</th>
+            <th>ID de ciudadano</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Departamento (Nombre, Código)</th>
+            <th>Municipio (Nombre, Código, Código departamento)</th>
+            <th>Fecha (AÑO-MES-DÍA)</th>
+            <th>Hora</th>
+            <th>Ingreso</th>
+            <th>Razones</th>
+        </tr>
+        
+        <tr *ngFor="let rows of getVisit()" >
+            <td *ngFor="let cols of rows" >
+                {{ cols}}
+            </td>
+        </tr>
+        
+    </table>
+
+    <!--{{ date }}-->
+</div>

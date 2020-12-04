@@ -27,12 +27,12 @@
             <label for="Municipio">Municipio:</label>
         </div>
         <div class="municipality">
-            <select formControlName="departments" [class.is-valid]="untimely_visit.get('departments').touched && untimely_visit.get('departments').invalid" name="Departamento" id="">
+            <select formControlName="department" [class.is-valid]="untimely_visit.get('department').touched && untimely_visit.get('department').invalid" name="Departamento" id="">
                 <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
                     {{ dep[0] }}
                 </option>
             </select>
-            <select formControlName="municipalities" [class.is-valid]="untimely_visit.get('municipalities').touched && untimely_visit.get('municipalities').invalid" name="Municipio" id="">
+            <select formControlName="municipality" [class.is-valid]="untimely_visit.get('municipality').touched && untimely_visit.get('municipality').invalid" name="Municipio" id="">
                 <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
                     {{ m[0] }}
                 </option>
@@ -40,7 +40,7 @@
         </div>
         <label for="Neighborhoods">Barrio:</label>
         <div class="address" name="Neighborhoods">
-            <select name="Barrio" formControlName="neighborhoods" [class.is-valid]="untimely_visit.get('neighborhoods').touched && untimely_visit.get('neighborhoods').invalid">
+            <select name="Barrio" formControlName="neighborhood" [class.is-valid]="untimely_visit.get('neighborhood').touched && untimely_visit.get('neighborhood').invalid">
                 <option *ngFor="let n of getNeighborhoods()" [ngValue]="n" value="Barrio">
                     {{ n }}
                 </option>
@@ -57,7 +57,7 @@
             <input formControlName="temperature" type="number" value="Temperatura" placeholder="Temperatura">
         </div>
         <div class="municipality labels">
-            <label for="time_input">Fecha: Día-Mes-Año</label>
+            <label for="time_input">Fecha: Mes-Día-Año</label>
             <label for="date_input">Hora:</label>
         </div>
         <div class="date-time">

@@ -33,4 +33,12 @@ export class VisitsService {
     });
   }
 
+  public get_visits_PE(nit : string) : Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5200/establishment/visit", {"nit" : nit} , {}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
 }

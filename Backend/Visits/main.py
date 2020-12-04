@@ -96,7 +96,7 @@ def untimely_visit():
     temp_reason = "Temperatura mayor o igual a 38°" if temp >= 38 else ""
     date_time=datetime.datetime.strptime(date + " " + time, '%Y-%m-%d %H:%M')
     req_['reason'] = [mask_reason, temp_reason]
-    req_['date_time'] = date_time
+    req_['date'] = date_time
     if(entry == "Aceptado"):
         req_['entry']=True
     else:
@@ -115,7 +115,7 @@ def citizen_visit():
     establishments_info=[]
     for i in visit:
         date_time= str(i['date']).split()
-        entry="Ingresó" if i['entry'] else "No ingresó"
+        entry="Aprobado" if i['entry'] else "Rechazado"
         establishments_info.append([i['nit'], i['establishment_name'], i['category'], date_time[0], date_time[1], entry, i['reason']])
     return jsonify({"response" : establishments_info})
 
@@ -127,8 +127,8 @@ def est_visit():
     establishments_info=[]
     for i in visit:
         date_time= str(i['date']).split()
-        entry="Ingresó" if i['entry'] else "No ingresó"
-        establishments_info.append([i['document'], i['id'], i['name'] + " " + i['surname'], i['gender'], i['department'],i['municipality'] ,date_time[0], date_time[1], entry, i['reason']])
+        entry="Aprobado" if i['entry'] else "Rechazado"
+        establishments_info.append([i['document'], i['id'], i['name'] + " " + i['surname'], i['gender'], i['department'] ,i['municipality'] ,date_time[0], date_time[1], entry, i['reason']])
     return jsonify({"response" : establishments_info})
 
 

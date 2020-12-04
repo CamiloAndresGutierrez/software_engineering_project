@@ -2,18 +2,31 @@
     <h1>Pruebas</h1>
     <p>Aquí puede revisar el estado de las pruebas por COVID-19 que se haya realizado</p>
 </div>
-<div class="date-picker" [formGroup]="he_test">
-    <input formControlName="date" class="date_" type="date" name="" id="">
-    <button class="filter" (click)="setDate()">Filtrar</button>
-    <button class="filter-delete" (click)="deleteFilter()">Borrar filtro</button>
+<div class="filters">
+    <div class="date-picker" [formGroup]="he_date">
+        <input formControlName="date" class="date_" type="date" name="" id="">
+        <button [disabled]="he_date.invalid"  class="filter" (click)="setDate()">Filtrar</button>
+    </div>
+    <div class="date-picker" [formGroup]="he_time">
+        <input name="time" formControlName="time" class="date_" type="time" name="" id="">
+        <button [disabled]="he_time.invalid"  class="filter" (click)="setTime()">Filtrar</button>
+    </div>
+    <div class="date-picker" [formGroup]="he_ID">
+        <input name="id" formControlName="id" class="cit-id" type="number" name="" id="">
+        <button [disabled]="he_ID.invalid"  class="filter" (click)="setID()">Filtrar</button>
+    </div>
+    <div class="date-picker">
+        <button class="filter-delete" (click)="deleteFilter()">Borrar filtros</button>
+    </div>
 </div>
+
 <div class="container">
     <table>
         <tr>
             <th>ID de ciudadano</th>
             <th>Tipo de document</th>
             <th>Entidad de salud</th>
-            <th>Fecha</th>
+            <th>Fecha (AÑO-MES-DÍA)</th>
             <th>Hora</th>
             <th>Resultado</th>
             <th>Estado</th>
