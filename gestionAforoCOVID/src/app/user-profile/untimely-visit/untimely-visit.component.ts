@@ -18,12 +18,12 @@ export class UntimelyVisitComponent implements OnInit {
   private  neighborhoods : any ;
   private document_types : any;
   private genders = ["Masculino", "Femenino", "Otro"]
+  private entry = ["Aceptado", "Rechazado"]
 
 
   untimely_visit = new FormGroup({
     name : new FormControl('', Validators.required),
     surname : new FormControl('', Validators.required),
-    username : new FormControl('', Validators.required),
     document  : new FormControl('', Validators.required),
     id : new FormControl('', [Validators.required, Validators.min(0)]),
     gender : new FormControl('', Validators.required),
@@ -35,6 +35,7 @@ export class UntimelyVisitComponent implements OnInit {
     temperature : new FormControl('', [Validators.required, Validators.min(0), Validators.max(100)]),
     time : new FormControl('', Validators.required),
     date : new FormControl('', Validators.required),
+    entry : new FormControl('', Validators.required),
   })
 
   ngOnInit(): void {
@@ -83,7 +84,12 @@ export class UntimelyVisitComponent implements OnInit {
       if(this.response == "success"){
         alert("La visita se ha registrado")
       }
+      location.reload();
     })
+  }
+
+  get_entry(){
+    return this.entry;
   }
 
 }

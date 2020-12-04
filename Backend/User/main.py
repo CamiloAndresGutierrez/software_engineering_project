@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import pymongo
 from pymongo import MongoClient
 import jwt
-from userService.model.citizen import Citizen
 from userService.constant.constants import SECRET_KEY as SK
 from userService.constant.constants import ROL as rol
 from userDatabase.collections import db
@@ -36,8 +35,6 @@ def estRegistration():
     cat = req_['category']
 
     encoded_password = jwt.encode({"password":password}, SK, algorithm="HS256").decode('utf-8')
-
-    registeredUser = establishmentCollection.find_one({"nit" : nit, "email" : email, "username" : username})
     
     valid_username_PE = establishmentCollection.find_one({"username" : username})
     valid_username_HE = healthEntityCollection.find_one({"username" : username})
@@ -46,11 +43,11 @@ def estRegistration():
 
     valid_id = establishmentCollection.find_one({"nit" : nit})
 
-
     flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
     flag2 = True if valid_id == None else False
-    if(flag and flag2):
-        if(registeredUser != None):
+    
+    if(flag):
+        if(not flag2):
             return {"response" : "failed"}
         else:
             establishmentCollection.insert_one({"veredict": "pending","nit":nit, "name": name, "phone" : [phone], "email" : email, "username": username, "password":encoded_password, "address" : address, "departments" : dep, "municipality" : mun, "neighborhood" : ngh, "category" : cat})
@@ -75,20 +72,19 @@ def citRegistration():
 
     encoded_password = jwt.encode({"password":password}, SK, algorithm="HS256").decode('utf-8')
     
-    registeredUser = citizenCollection.find_one({"username" : username , "id" : id_})
-    
+   
     valid_username_PE = establishmentCollection.find_one({"username" : username})
     valid_username_HE = healthEntityCollection.find_one({"username" : username})
     valid_username_cit = citizenCollection.find_one({"username" : username})
     valid_username_Admin = adminCollection.find_one({"username" : username})
 
-    valid_id = citizenCollection.find_one({"id" : id_})
+    valid_id = citizenCollection.find_one({"id" : id_, "document" : doc})
     
     flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
     flag2 = True if valid_id == None else False
 
-    if(flag and flag2):
-        if(registeredUser != None):
+    if(flag):
+        if(not flag2):
             return {"response" : "failed"}
         else:
             citizenCollection.insert_one({"name":name, "surname": surname, "username":username, "password" : encoded_password, "gender": gender, "document" : doc ,"id" : id_, "department" : dep , "municipality" : mun , "neighbourhood" : ngh , "address": address})
@@ -111,9 +107,7 @@ def healthEntityRegistration():
     ngh = req_['neighborhoods']
 
     encoded_password = jwt.encode({"password":password}, SK, algorithm="HS256").decode('utf-8')
-    
-    registeredUser = healthEntityCollection.find_one({"nit" : nit, "email" : email, "username" : username})
-    
+        
     valid_username_PE = establishmentCollection.find_one({"username" : username})
     valid_username_HE = healthEntityCollection.find_one({"username" : username})
     valid_username_cit = citizenCollection.find_one({"username" : username})
@@ -124,8 +118,8 @@ def healthEntityRegistration():
     flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
     flag2 = True if valid_id == None else False
 
-    if(flag and flag2):
-        if(registeredUser != None):
+    if(flag):
+        if(not flag2):
             return {"response" : "failed"}
         else:
             healthEntityCollection.insert_one({"veredict": "pending","nit":nit, "name": name, "phone" : [phone], "email" : email, "username": username, "password":encoded_password, "address" : address, "department" : dep, "municipality": mun, "neighborhood": ngh})
@@ -151,15 +145,13 @@ def add_admin():
     valid_username_cit = citizenCollection.find_one({"username" : username})
     valid_username_Admin = adminCollection.find_one({"username" : username})
 
-    registeredUser = adminCollection.find_one({"username" : username , "id" : id_})
-
-    valid_id = adminCollection.find_one({"id" : id_})
+    valid_id = adminCollection.find_one({"id" : id_, "document" : doc})
     
     flag = True if valid_username_HE == valid_username_PE == valid_username_cit == valid_username_Admin == None else False
     flag2 = True if valid_id == None else False
 
-    if(flag and flag2):
-        if(registeredUser != None):
+    if(flag):
+        if(not flag2):
             return {"response" : "failed"}
         else:
             adminCollection.insert_one({"name":name, "surname": surname, "username":username, "password" : encoded_password, "document" : doc ,"id" : id_ })
@@ -182,16 +174,16 @@ def login():
 
     if(not flag):
         if(isitA != None):
-            token = jwt.encode({"username": isitA['username'], "rol" : rol[0], "name": isitA['name'], "id": isitA['id']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitA['username'], "rol" : rol[0], "category" : "" ,"name": isitA['name'], "id": isitA['id'], "document" : isitA['document']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
         if(isitC != None):
-            token = jwt.encode({"username": isitC['username'], "rol" : rol[1], "name": isitC['name'], "id": isitC['id']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitC['username'], "rol" : rol[1], "category" : "" ,"name": isitC['name'], "id": isitC['id'], "document" : isitC['document']}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" :  token})
         if(isitPE != None):
-            token = jwt.encode({"username": isitPE['username'], "rol" : rol[2], "name": isitPE['name'], "id" : isitPE['nit']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitPE['username'], "rol" : rol[2], "category" : isitPE['category'] ,"name": isitPE['name'], "id" : isitPE['nit'], "document" : "NIT"}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
         if(isitHE != None):
-            token = jwt.encode({"username": isitHE['username'], "rol" : rol[3], "name": isitHE['name'], "id" : isitHE['nit']}, SK, algorithm="HS256").decode('utf-8')
+            token = jwt.encode({"username": isitHE['username'], "rol" : rol[3], "category" : "" ,"name": isitHE['name'], "id" : isitHE['nit'], "document" : "NIT"}, SK, algorithm="HS256").decode('utf-8')
             return jsonify({"response" : token})
     else: 
         return jsonify({"response" : "404"})

@@ -26,6 +26,11 @@ import { ParametersComponent } from './user-profile/parameters/parameters.compon
 import { AccountStateComponent } from './user-profile/account-state/account-state.component';
 import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
 import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-visit.component';
+import { NewTestComponent } from './user-profile/new-test/new-test.component';
+import { CitizenTestComponent } from './user-profile/citizen-test/citizen-test.component';
+import { HETestHistoryComponent } from './user-profile/he-test-history/he-test-history.component';
+import { CitizenVisitComponent } from './user-profile/citizen-visit/citizen-visit.component';
+import { EstablishmentVisitComponent } from './user-profile/establishment-visit/establishment-visit.component';
 
 
 @NgModule({
@@ -49,7 +54,12 @@ import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-v
     ParametersComponent,
     AccountStateComponent,
     ManualVisitComponent,
-    UntimelyVisitComponent
+    UntimelyVisitComponent,
+    NewTestComponent,
+    CitizenTestComponent,
+    HETestHistoryComponent,
+    CitizenVisitComponent,
+    EstablishmentVisitComponent
   ],
   imports: [
     BrowserModule,

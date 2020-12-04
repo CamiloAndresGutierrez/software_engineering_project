@@ -15,6 +15,22 @@ export class VisitsService {
         resolve(data['response']);
       });
     });
-
   }
+
+  public manual_visit(visit_info : FormGroup) : Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5200/visit/manual", visit_info.value , {}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public get_visits(id : number, document : string) : Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5200/citizen/visit", {"id" : id, "document": document} , {}).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
 }

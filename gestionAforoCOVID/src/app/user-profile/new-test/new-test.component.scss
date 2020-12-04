@@ -16,6 +16,24 @@
     }
 }
 
+@import "src/scss/_globals.scss";
+@import "src/scss/_mixins.scss";
+@import "src/scss/_variables.scss";
+
+
+.jumbotron{
+    padding: 0.625rem 6.25rem;
+    margin-top: 1.25rem;
+    background-color: white;
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06);
+    @include breakpoints-down(medium){
+        padding: 0.625rem 3.125rem;
+    }
+}
+
 input {
     height:2.1875rem;
     border-radius: 0.3125rem;

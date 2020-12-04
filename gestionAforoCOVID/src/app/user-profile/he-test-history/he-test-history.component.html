@@ -1,0 +1,40 @@
+<div class="jumbotron" >
+    <h1>Pruebas</h1>
+    <p>Aquí puede revisar el estado de las pruebas por COVID-19 que se haya realizado</p>
+</div>
+<div class="date-picker" [formGroup]="he_test">
+    <input formControlName="date" class="date_" type="date" name="" id="">
+    <button class="filter" (click)="setDate()">Filtrar</button>
+    <button class="filter-delete" (click)="deleteFilter()">Borrar filtro</button>
+</div>
+<div class="container">
+    <table>
+        <tr>
+            <th>ID de ciudadano</th>
+            <th>Tipo de document</th>
+            <th>Entidad de salud</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Resultado</th>
+            <th>Estado</th>
+        </tr>
+        
+        <tr *ngFor="let rows of getTests()" >
+            <td *ngFor="let cols of rows" >
+                {{ cols}}
+            </td>
+            <td>
+                <div [formGroup]="change_test_state">
+                    <select formControlName="state" name="state" id="">
+                        <option *ngFor="let state of get_states()" [ngValue]="state" value="">
+                            {{ state }}
+                        </option>
+                    </select>
+                    <input [disabled]="change_test_state.invalid" (click)="change_state(rows[0],rows[1],rows[3],rows[4])" class="filter"  type="submit" value="Actualizar">
+                </div>
+            </td>
+        </tr>        
+    </table>
+
+    <!--{{ date }}-->
+</div>

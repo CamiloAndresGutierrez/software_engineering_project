@@ -2,3 +2,30 @@
     <h1>Visita manual</h1>
     <p>Aquí puede registrar la visita del ciudadano a través de su tipo de documento y número de documento.</p>
 </div>
+
+<div class="form">
+    <h1>Registro manual</h1>
+    <form [formGroup]="manual_visit" class="registration-form" action="">
+        <label for="document">Tipo de documento:</label>
+        <div class="documentation" name ="document">
+            <select formControlName="document" [class.is-valid]="manual_visit.get('document').touched && manual_visit.get('document').invalid" name="Tipo_documento" id="">
+                <option *ngFor="let d of getDocuments()" [ngValue]="d" class="document_type" value="Tipo de documento">
+                    {{ d }}
+                </option>
+            </select>
+            <input formControlName="id" [class.is-valid]="manual_visit.get('id').touched && manual_visit.get('id').invalid" type="number" placeholder="Número documento">
+        </div>
+        
+        <label for="mask_option">Tapabocas: </label>
+        <div class="entry-conditions">
+            <select formControlName="mask" name="mask_option" id="">
+                <option *ngFor="let m of get_mask_options()" [ngValue]="m">
+                    {{ m }}
+                </option>
+            </select>
+            <input formControlName="temperature" type="number" value="Temperatura" placeholder="Temperatura">
+        </div>
+
+        <input (click)="register_visit()" [disabled]="manual_visit.invalid" type="submit" value="Enviar" class="submit" >
+    </form>
+</div>

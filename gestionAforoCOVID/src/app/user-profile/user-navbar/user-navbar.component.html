@@ -11,8 +11,8 @@
         <span></span>
     </div>
     <div class="button-group hide-mobile" *ngIf="isCitizen()">
-        <a class="test" href="#">Historial</a>
-        <a class="about-us" href="#">Prueba</a>
+        <a class="test" href="/dashboard/citizen-visit">Historial</a>
+        <a class="about-us" href="/dashboard/citizen-test">Prueba</a>
         <a class="login" href="#">Código QR</a>
         <a class="register" href="#">Perfil</a>
     </div>
@@ -26,8 +26,8 @@
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isHealthEntity()">
-        <a class="home" href="#">Historial</a>
-        <a class="about-us" href="#">Prueba nueva</a>
+        <a class="home" href="/dashboard/HE-test">Historial</a>
+        <a class="about-us" href="/dashboard/new-test">Prueba nueva</a>
         <a class="register" href="#">Perfil</a>
     </div>
 
@@ -39,14 +39,12 @@
         <a class="login" href="/dashboard/parameters">Parámetros</a>
         <a class="register" href="#">Perfil</a>
     </div>
-    
-        
 </nav>
 
 <div class="side-bar" [ngClass]="checkFlag() ? 'show-side-bar' : ''">
     <div *ngIf="isCitizen()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
-        <a class="test" href="#">Historial</a>
-        <a class="about-us" href="#">Prueba</a>
+        <a class="test" href="dashboard/citizen-visit">Historial</a>
+        <a class="about-us" href="/dashboard/citizen-test">Prueba</a>
         <a class="login" href="#">Código QR</a>
         <a class="register" href="#">Perfil</a>
     </div>
@@ -60,8 +58,8 @@
     </div>
 
     <div *ngIf="isHealthEntity()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
-        <a class="home" href="#">Historial</a>
-        <a class="about-us" href="#">Prueba nueva</a>
+        <a class="home" href="/dashboard/HE-test">Historial</a>
+        <a class="about-us" href="/dashboard/new-test">Prueba nueva</a>
         <a class="register" href="#">Perfil</a>
     </div>
 

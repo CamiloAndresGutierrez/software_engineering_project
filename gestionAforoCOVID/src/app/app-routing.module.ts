@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardGuard , MainGuard } from './authentication.guard';
+import { AdminGuard, CitizenGuard, DashboardGuard , EstablishmentGuard, HealthEntityGuard, MainGuard } from './authentication.guard';
 import { LangingPageComponent } from './landing-page/langing-page/langing-page.component';
 import { MainComponent } from './landing-page/main/main.component';
 import { AccountStateComponent } from './user-profile/account-state/account-state.component';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
+import { CitizenTestComponent } from './user-profile/citizen-test/citizen-test.component';
+import { CitizenVisitComponent } from './user-profile/citizen-visit/citizen-visit.component';
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
+import { EstablishmentVisitComponent } from './user-profile/establishment-visit/establishment-visit.component';
+import { HETestHistoryComponent } from './user-profile/he-test-history/he-test-history.component';
 import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
+import { NewTestComponent } from './user-profile/new-test/new-test.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
 import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-visit.component';
 import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
@@ -61,26 +66,57 @@ const routes: Routes = [
       {
         path : "check-registration",
         component : CheckRegistrationComponent,
+        canActivate : [AdminGuard]
       },
       {
         path : "new-admin",
         component : CreateAdminComponent,
+        canActivate : [AdminGuard]
       },
       {
         path : "parameters",
         component : ParametersComponent,
+        canActivate : [AdminGuard]
       },
       {
         path: "accounts",
-        component : AccountStateComponent
+        component : AccountStateComponent,
+        canActivate : [AdminGuard]
       },
       {
         path : "manual-visit",
         component : ManualVisitComponent,
+        canActivate: [EstablishmentGuard]
       },
       {
         path : "untimely-visit",
-        component : UntimelyVisitComponent
+        component : UntimelyVisitComponent,
+        canActivate: [EstablishmentGuard]
+      },
+      {
+        path : "new-test",
+        component : NewTestComponent,
+        canActivate : [HealthEntityGuard],
+      },
+      {
+        path : "citizen-test",
+        component : CitizenTestComponent,
+        canActivate : [CitizenGuard]
+      },
+      {
+        path : "HE-test",
+        component : HETestHistoryComponent,
+        canActivate : [HealthEntityGuard],
+      },
+      {
+        path: "citizen-visit",
+        component : CitizenVisitComponent,
+        canActivate : [CitizenGuard]
+      },
+      {
+        path : "establishment-visit",
+        component : EstablishmentVisitComponent,
+        canActivate: [EstablishmentGuard]
       }
   ]
   }

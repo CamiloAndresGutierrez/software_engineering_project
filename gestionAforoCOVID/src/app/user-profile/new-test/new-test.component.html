@@ -1,0 +1,27 @@
+<div class="jumbotron" >
+    <h1>Prueba nueva</h1>
+    <p>Aquí puede registrar las pruebas por COVID-19 del ciudadano.</p>
+</div>
+
+<div class="form">
+    <h1>Nueva prueba</h1>
+    <form [formGroup]="new_test" class="registration-form" action="">
+        <label for="document">Tipo de documento:</label>
+        <div class="documentation" name ="document">
+            <select formControlName="document" [class.is-valid]="new_test.get('document').touched && new_test.get('document').invalid" name="Tipo_documento" id="">
+                <option *ngFor="let d of getDocuments()" [ngValue]="d" class="document_type" value="Tipo de documento">
+                    {{ d }}
+                </option>
+            </select>
+            <input formControlName="id" [class.is-valid]="new_test.get('id').touched && new_test.get('id').invalid" type="number" placeholder="Número documento">
+        </div>
+        
+        <label for="mask_option">Fecha y hora: </label>
+        <div class="entry-conditions">
+            <input formControlName="date" type="date" placeholder="Temperatura">
+            <input formControlName="time" type="time" placeholder="Temperatura">
+        </div>
+        <!--{{ new_test.value['document'] | json }}-->
+        <input (click)="send_test()" [disabled]="new_test.invalid" type="submit" value="Enviar" class="submit" >
+    </form>
+</div>
