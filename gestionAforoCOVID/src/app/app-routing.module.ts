@@ -5,20 +5,26 @@ import { LangingPageComponent } from './landing-page/langing-page/langing-page.c
 import { MainComponent } from './landing-page/main/main.component';
 import { AccountStateComponent } from './user-profile/account-state/account-state.component';
 import { AdminProfileComponent } from './user-profile/admin-profile/admin-profile.component';
+import { AdminReportsComponent } from './user-profile/admin-reports/admin-reports.component';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
 import { CitizenProfileComponent } from './user-profile/citizen-profile/citizen-profile.component';
+import { CitizenReportComponent } from './user-profile/citizen-report/citizen-report.component';
 import { CitizenTestComponent } from './user-profile/citizen-test/citizen-test.component';
 import { CitizenVisitComponent } from './user-profile/citizen-visit/citizen-visit.component';
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
 import { EstablishmentProfileComponent } from './user-profile/establishment-profile/establishment-profile.component';
+import { EstablishmentReportComponent } from './user-profile/establishment-report/establishment-report.component';
 import { EstablishmentVisitComponent } from './user-profile/establishment-visit/establishment-visit.component';
 import { HETestHistoryComponent } from './user-profile/he-test-history/he-test-history.component';
 import { HealthEntityProfileComponent } from './user-profile/health-entity-profile/health-entity-profile.component';
+import { HealthEntityReportComponent } from './user-profile/health-entity-report/health-entity-report.component';
 import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
 import { NewTestComponent } from './user-profile/new-test/new-test.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
+import { TestReportComponent } from './user-profile/test-report/test-report.component';
 import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-visit.component';
 import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
+import { VisitReportComponent } from './user-profile/visit-report/visit-report.component';
 import { UserOptionsLoginComponent } from './user/user-options-login/user-options-login.component';
 import { UserOptionsMainComponent } from './user/user-options-main/user-options-main.component';
 import { CitizenComponent } from './user/user-options-registration/citizen/citizen.component';
@@ -141,7 +147,36 @@ const routes: Routes = [
         path : "admin-profile",
         component : AdminProfileComponent,
         canActivate: [AdminGuard]
+      },
+      {
+        path : "reports",
+        component : AdminReportsComponent,
+        canActivate: [AdminGuard],
+        children : [
+          {
+            path : 'visit',
+            component : VisitReportComponent,
+          },
+          {
+            path : 'tests',
+            component : TestReportComponent,
+          },
+          {
+            path : 'citizen',
+            component : CitizenReportComponent,
+          },
+          {
+            path : 'establishment',
+            component : EstablishmentReportComponent,
+          },
+          {
+            path : 'health-entity',
+            component : HealthEntityReportComponent,
+          },
+          
+        ]
       }
+
 
   ]
   }

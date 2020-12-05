@@ -1,0 +1,36 @@
+<div *ngIf="router.url === '/dashboard/reports'">
+    <div class="jumbotron" >
+        <h1>Reportes</h1>
+        <p>Aquí puede generar reportes sobre el sistema.</p>
+    </div>
+    
+    <div class="container" >
+        <a href="/dashboard/reports/visit">
+            <div class="report"> 
+                Reporte de Visitas
+            </div>
+        </a>
+        <a href="/dashboard/reports/tests">
+            <div class="report">
+                Reporte de Pruebas
+            </div>
+        </a>
+        <a href="/dashboard/reports/citizen">
+            <div class="report">
+                Reporte de Ciudadanos
+            </div>
+        </a>
+        <a href="/dashboard/reports/establishment">
+            <div class="report">
+                Reporte de Establecimientos públicos
+            </div>
+        </a>
+        <a href="/dashboard/reports/health-entity">
+            <div class="report">
+                Reporte de Entidades de salud
+            </div>
+        </a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

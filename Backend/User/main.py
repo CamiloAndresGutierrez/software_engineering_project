@@ -276,7 +276,7 @@ def modifyCitizenInfo():
     neighborhood=cit_info['neighbourhood'] if req_['neighbourhood']  == "" else req_['neighbourhood']
     address=cit_info['address'] if req_['address'] == ""  else req_['address']
 
-    citizenCollection.update_one({"id":id_, "document":doc}, {"$set" :{"name" : name, "surname" : surname, "password" : password, "gender" : gender, "department" : department, "municipality" : municipality, "neighborhood" : neighborhood, "address" : address, }})
+    citizenCollection.update_one({"id":id_, "document":doc}, {"$set" :{"name" : name, "surname" : surname, "password" : password, "gender" : gender, "department" : department, "municipality" : municipality, "neighbourhood" : neighborhood, "address" : address, }})
     
     return jsonify({"response":"success"})
 

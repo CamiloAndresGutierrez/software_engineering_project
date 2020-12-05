@@ -1,0 +1,38 @@
+<div class="jumbotron" >
+    <h1>Reporte de establecimientos</h1>
+</div>
+
+<div class="filters">
+    <div class="date-picker" [formGroup]="categories">
+        <select formControlName="category" name="" id="">
+            <option *ngFor="let cat of getCategories()" [ngValue]="cat">
+                {{ cat }}
+            </option>
+        </select>
+        <button class="filter" (click)="setCategory()">Filtrar</button>
+        <button class="filter-delete" (click)="deleteFilter()">Borrar filtro</button>
+    </div>
+</div> 
+
+<div class="container">
+    <table>
+        <tr>
+            <th>NIT</th>
+            <th>Nombre del establecimiento</th>
+            <th>Teléfono</th>
+            <th>E-mail</th>
+            <th>Dirección</th>
+            <th>Departamento (nombre, código)</th>
+            <th>Municipio (nombre, código, código departamento)</th>
+            <th>Barrio</th>
+            <th>Categoría</th>
+        </tr>
+        
+        <tr *ngFor="let rows of getReport()" >
+            <td *ngFor="let cols of rows" >
+                {{ cols}}
+            </td>
+        </tr>
+        
+    </table>
+</div>

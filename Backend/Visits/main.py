@@ -29,7 +29,7 @@ def manual_visit():
     mask=req_['mask']
     temp=req_['temperature']
     print(req_)
-    quarantine = "NEGATIVO" #Cambiar cuando se tenga el servicio de pruebas
+    quarantine = "NEGATIVO" 
 
     tested_citizen=testCollection.find({"id":id_,"document":doc})
     for i in tested_citizen:

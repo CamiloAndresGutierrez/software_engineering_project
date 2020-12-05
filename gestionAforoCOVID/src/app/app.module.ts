@@ -35,6 +35,12 @@ import { EstablishmentProfileComponent } from './user-profile/establishment-prof
 import { CitizenProfileComponent } from './user-profile/citizen-profile/citizen-profile.component';
 import { HealthEntityProfileComponent } from './user-profile/health-entity-profile/health-entity-profile.component';
 import { AdminProfileComponent } from './user-profile/admin-profile/admin-profile.component';
+import { AdminReportsComponent } from './user-profile/admin-reports/admin-reports.component';
+import { VisitReportComponent } from './user-profile/visit-report/visit-report.component';
+import { TestReportComponent } from './user-profile/test-report/test-report.component';
+import { CitizenReportComponent } from './user-profile/citizen-report/citizen-report.component';
+import { EstablishmentReportComponent } from './user-profile/establishment-report/establishment-report.component';
+import { HealthEntityReportComponent } from './user-profile/health-entity-report/health-entity-report.component';
 
 
 @NgModule({
@@ -67,7 +73,13 @@ import { AdminProfileComponent } from './user-profile/admin-profile/admin-profil
     EstablishmentProfileComponent,
     CitizenProfileComponent,
     HealthEntityProfileComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    AdminReportsComponent,
+    VisitReportComponent,
+    TestReportComponent,
+    CitizenReportComponent,
+    EstablishmentReportComponent,
+    HealthEntityReportComponent
   ],
   imports: [
     BrowserModule,
