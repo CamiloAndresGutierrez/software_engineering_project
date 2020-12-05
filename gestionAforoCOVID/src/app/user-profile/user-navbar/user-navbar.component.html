@@ -13,8 +13,8 @@
     <div class="button-group hide-mobile" *ngIf="isCitizen()">
         <a class="test" href="/dashboard/citizen-visit">Historial</a>
         <a class="about-us" href="/dashboard/citizen-test">Prueba</a>
-        <a class="login" href="#">Código QR</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="login" href="">Código QR</a>
+        <a class="register" href="/dashboard/citizen-profile">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isEstablishment()">
@@ -22,13 +22,13 @@
         <a class="about-us" href="#">Visita con QR</a>
         <a class="login" href="/dashboard/manual-visit">Visita manual</a>
         <a class="login" href="/dashboard/untimely-visit">Visita a destiempo</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/establishment-profile">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isHealthEntity()">
         <a class="home" href="/dashboard/HE-test">Historial</a>
         <a class="about-us" href="/dashboard/new-test">Prueba nueva</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/health-profile">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isAdmin()">
@@ -37,7 +37,7 @@
         <a class="login" href="/dashboard/new-admin">Crear Admin</a>
         <a class="login" href="#">Reportes</a>
         <a class="login" href="/dashboard/parameters">Parámetros</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/admin-profile">Perfil</a>
     </div>
 </nav>
 
@@ -46,7 +46,7 @@
         <a class="test" href="dashboard/citizen-visit">Historial</a>
         <a class="about-us" href="/dashboard/citizen-test">Prueba</a>
         <a class="login" href="#">Código QR</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/citizen-profile">Perfil</a>
     </div>
     
     <div *ngIf="isEstablishment()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
@@ -54,13 +54,13 @@
         <a class="about-us" href="#">Visita con QR</a>
         <a class="login" href="/dashboard/manual-visit">Visita manual</a>
         <a class="login" href="/dashboard/untimely-visit">Visita a destiempo</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/establishment-profile">Perfil</a>
     </div>
 
     <div *ngIf="isHealthEntity()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
         <a class="home" href="/dashboard/HE-test">Historial</a>
         <a class="about-us" href="/dashboard/new-test">Prueba nueva</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/health-profile">Perfil</a>
     </div>
 
     <div *ngIf="isAdmin()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
@@ -69,6 +69,6 @@
         <a class="login" href="/dashboard/new-admin">Crear Admin</a>
         <a class="login" href="#">Reportes</a>
         <a class="login" href="/dashboard/parameters">Parámetros</a>
-        <a class="register" href="#">Perfil</a>
+        <a class="register" href="/dashboard/admin-profile">Perfil</a>
     </div>
 </div>

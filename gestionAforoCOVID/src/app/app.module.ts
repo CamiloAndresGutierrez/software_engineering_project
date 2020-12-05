@@ -31,6 +31,10 @@ import { CitizenTestComponent } from './user-profile/citizen-test/citizen-test.c
 import { HETestHistoryComponent } from './user-profile/he-test-history/he-test-history.component';
 import { CitizenVisitComponent } from './user-profile/citizen-visit/citizen-visit.component';
 import { EstablishmentVisitComponent } from './user-profile/establishment-visit/establishment-visit.component';
+import { EstablishmentProfileComponent } from './user-profile/establishment-profile/establishment-profile.component';
+import { CitizenProfileComponent } from './user-profile/citizen-profile/citizen-profile.component';
+import { HealthEntityProfileComponent } from './user-profile/health-entity-profile/health-entity-profile.component';
+import { AdminProfileComponent } from './user-profile/admin-profile/admin-profile.component';
 
 
 @NgModule({
@@ -59,7 +63,11 @@ import { EstablishmentVisitComponent } from './user-profile/establishment-visit/
     CitizenTestComponent,
     HETestHistoryComponent,
     CitizenVisitComponent,
-    EstablishmentVisitComponent
+    EstablishmentVisitComponent,
+    EstablishmentProfileComponent,
+    CitizenProfileComponent,
+    HealthEntityProfileComponent,
+    AdminProfileComponent
   ],
   imports: [
     BrowserModule,

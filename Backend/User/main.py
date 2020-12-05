@@ -236,7 +236,89 @@ def user_state():
         healthEntityCollection.update_one({"nit": nit, "username":username}, {"$set" : {"veredict":veredict}})
         return jsonify({"response" : "success"})
 
+@app.route("/modify-info/establishment", methods=['POST'])
+def modifyEstablishmentInfo():
+    req_=request.json
+    nit=req_['NIT']
+
+    est_info = establishmentCollection.find_one({"nit" : nit})
+    
+    name= est_info['name'] if req_['name'] == "" else req_['name']
+    phone= est_info['phone'] if req_['phone'] == "" else [req_['phone']]
+    email=est_info['email'] if req_['email'] == "" else req_['email']
+    encoded_pass=jwt.encode({"password" : req_['password']}, SK, algorithm="HS256").decode('utf-8')
+    password=est_info['password'] if req_['password'] == "" else encoded_pass
+    category=est_info['category'] if req_['category'] == "" else req_['category']
+    departments=est_info['departments'] if req_['departments'] == "" else req_['departments']
+    municipality=est_info['municipality'] if req_['municipality'] == "" else req_['municipality']
+    neighborhood=est_info['neighborhood'] if req_['neighborhood'] == "" else req_['neighborhood']
+    address=est_info['address'] if req_['address'] == "" else req_['address']
+  
+    establishmentCollection.update_one({"nit" : nit}, { "$set" :{"name" : name,"password":password ,"phone" : phone, "email" : email, "category":category, "departments" : departments, 'municipality':municipality,'neighborhood':neighborhood,'address':address}})
+
+    return jsonify({"response" : "success"})
+
+@app.route("/modify-info/citizen", methods=['POST'])
+def modifyCitizenInfo():
+    req_=request.json
+    id_=req_['id']
+    doc=req_['document']
+
+    cit_info=citizenCollection.find_one({"id":id_, "document":doc})
+
+    name=cit_info['name'] if req_['name']  == "" else req_['name']
+    surname=cit_info['surname'] if req_['surname']  == "" else req_['surname']
+    encoded_pass=jwt.encode({"password" : req_['password']}, SK, algorithm="HS256").decode('utf-8')
+    password=cit_info['password'] if req_['password']  == "" else encoded_pass
+    gender=cit_info['gender'] if req_['gender'] == ""  else req_['gender']
+    department=cit_info['department'] if req_['department'] == "" else req_['department']
+    municipality=cit_info['municipality'] if req_['municipality']  == "" else req_['municipality']
+    neighborhood=cit_info['neighbourhood'] if req_['neighbourhood']  == "" else req_['neighbourhood']
+    address=cit_info['address'] if req_['address'] == ""  else req_['address']
+
+    citizenCollection.update_one({"id":id_, "document":doc}, {"$set" :{"name" : name, "surname" : surname, "password" : password, "gender" : gender, "department" : department, "municipality" : municipality, "neighborhood" : neighborhood, "address" : address, }})
+    
+    return jsonify({"response":"success"})
+
+@app.route("/modify-info/health-entity", methods=['POST'])
+def modifyHealthEntityInfo():
+    req_=request.json
+    nit=req_['NIT']
+
+    he_info = healthEntityCollection.find_one({"nit" : nit})
+    
+    name= he_info['name'] if req_['name'] == "" else req_['name']
+    phone= he_info['phone'] if req_['phone'] == "" else [req_['phone']]
+    email=he_info['email'] if req_['email'] == "" else req_['email']
+    encoded_pass=jwt.encode({"password" : req_['password']}, SK, algorithm="HS256").decode('utf-8')
+    password=he_info['password'] if req_['password'] == "" else encoded_pass
+    
+    departments=he_info['department'] if req_['department'] == "" else req_['department']
+    municipality=he_info['municipality'] if req_['municipality'] == "" else req_['municipality']
+    neighborhood=he_info['neighborhood'] if req_['neighborhood'] == "" else req_['neighborhood']
+    address=he_info['address'] if req_['address'] == "" else req_['address']
+  
+    healthEntityCollection.update_one({"nit" : nit}, { "$set" :{"name" : name, "phone" : phone, "email" : email, "department" : departments, 'municipality':municipality,'neighborhood':neighborhood,'address':address, "password":password}})
+
+    return jsonify({"response" : "success"})
+
+@app.route("/modify-info/admin", methods=['POST'])
+def modifyAdminInfo():
+    req_=request.json
+    id_=req_['id']
+    doc=req_['document']
+
+    admin_info=adminCollection.find_one({"id":id_,"document":doc})
+
+    name=admin_info['name'] if req_['name']  == "" else req_['name']
+    surname=admin_info['surname'] if req_['surname']  == "" else req_['surname']
+    encoded_pass=jwt.encode({"password" : req_['password']}, SK, algorithm="HS256").decode('utf-8')
+    password=admin_info['password'] if req_['password']  == "" else encoded_pass
+
+    adminCollection.update_one({"id":id_, "document":doc}, {"$set":{"name": name, "surname":surname, "password":password}})
+
+
+    return jsonify({"response" : "success"})
+    
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-
-

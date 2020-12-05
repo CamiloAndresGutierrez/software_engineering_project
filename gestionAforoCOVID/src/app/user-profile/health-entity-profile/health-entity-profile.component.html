@@ -1,0 +1,45 @@
+<div class="jumbotron" >
+    <div class="logout">
+        <h1>Perfil</h1>
+        <input (click)="logOut()" type="submit" value="Cerrar sesión &#8690;">
+    </div>
+    <p>Aquí puede modificar la información de la entidad de salud y cerrar sesión</p>
+</div>
+
+<div class="form">
+    <h1>Registro de Entidad de salud</h1>
+    <form [formGroup]="HERegistration" class="registration-form" action="">
+        <input formControlName="name" type="text" id="" placeholder="Nombre">
+        <input formControlName="phone" type="text" id="" placeholder="Número telefónico">
+        <input formControlName="email" type="text" id="" placeholder="Correo electrónico">
+        <input formControlName="password" type="password" id="" placeholder="Contraseña">
+
+        <div class="municipality">
+            <label for="Departamento">Departamento:</label>
+            <label for="Municipio">Municipio:</label>
+        </div>
+        <div class="municipality">
+            <select formControlName="department" name="Departamento" id="">
+                <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
+                    {{ dep[0] }}
+                </option>
+            </select>
+            <select formControlName="municipality" name="Municipio" id="">
+                <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
+                    {{ m[0] }}
+                </option>
+            </select>
+        </div>
+
+        <label for="Barrio">Barrio:</label>
+        <div class="address">
+            <select formControlName="neighborhood" name="Barrio" id="">
+                <option *ngFor="let ngh of getNeighborhoods()" [ngValue]="ngh" value="Barrio">
+                    {{ ngh }}
+                </option>
+            </select>
+            <input formControlName="address" type="text" id="" placeholder="Dirección">
+        </div>
+        <input type="submit" value="Submit" class="submit" (click)="registerHE()">
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="jumbotron" >
+    <div class="logout">
+        <h1>Perfil</h1>
+        <input (click)="logOut()" type="submit" value="Cerrar sesión &#8690;">
+    </div>
+    <p>Aquí puede modificar su información de administrador y modificar los campos que requiera</p>
+</div>
+
+<div class="form">
+    <h1>Registro de Administrador</h1>
+    <form [formGroup]="adminRegistration" class="registration-form" action="">
+        <input formControlName="name" type="text" id="" placeholder="Nombres">
+        <input formControlName="surname" type="text" id="" placeholder="Apellidos">
+        <input formControlName="password" type="password" id="" placeholder="Contraseña">
+       
+        <input type="submit" value="Submit" class="submit" (click)="registerAdmin()">
+    </form>
+</div>

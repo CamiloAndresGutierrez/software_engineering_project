@@ -4,12 +4,16 @@ import { AdminGuard, CitizenGuard, DashboardGuard , EstablishmentGuard, HealthEn
 import { LangingPageComponent } from './landing-page/langing-page/langing-page.component';
 import { MainComponent } from './landing-page/main/main.component';
 import { AccountStateComponent } from './user-profile/account-state/account-state.component';
+import { AdminProfileComponent } from './user-profile/admin-profile/admin-profile.component';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
+import { CitizenProfileComponent } from './user-profile/citizen-profile/citizen-profile.component';
 import { CitizenTestComponent } from './user-profile/citizen-test/citizen-test.component';
 import { CitizenVisitComponent } from './user-profile/citizen-visit/citizen-visit.component';
 import { CreateAdminComponent } from './user-profile/create-admin/create-admin.component';
+import { EstablishmentProfileComponent } from './user-profile/establishment-profile/establishment-profile.component';
 import { EstablishmentVisitComponent } from './user-profile/establishment-visit/establishment-visit.component';
 import { HETestHistoryComponent } from './user-profile/he-test-history/he-test-history.component';
+import { HealthEntityProfileComponent } from './user-profile/health-entity-profile/health-entity-profile.component';
 import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
 import { NewTestComponent } from './user-profile/new-test/new-test.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
@@ -117,7 +121,28 @@ const routes: Routes = [
         path : "establishment-visit",
         component : EstablishmentVisitComponent,
         canActivate: [EstablishmentGuard]
+      },
+      {
+        path : "establishment-profile",
+        component : EstablishmentProfileComponent,
+        canActivate: [EstablishmentGuard]
+      },
+      {
+        path : "citizen-profile",
+        component : CitizenProfileComponent,
+        canActivate: [CitizenGuard]
+      },
+      {
+        path : "health-profile",
+        component : HealthEntityProfileComponent,
+        canActivate: [HealthEntityGuard]
+      },
+      {
+        path : "admin-profile",
+        component : AdminProfileComponent,
+        canActivate: [AdminGuard]
       }
+
   ]
   }
 

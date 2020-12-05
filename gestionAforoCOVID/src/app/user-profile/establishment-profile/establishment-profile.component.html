@@ -1,0 +1,50 @@
+<div class="jumbotron" >
+    <div class="logout">
+        <h1>Perfil</h1>
+        <input (click)="logOut()" type="submit" value="Cerrar sesión &#8690;">
+    </div>
+    <p>Aquí puede modificar la información del establecimiento público y cerrar sesión</p>
+</div>
+<div class="form">
+    <h1>Modificar datos de establecimiento</h1>
+    <form [formGroup]="establishmentRegistration" class="registration-form" action="">
+        <input formControlName="name" type="text" id="" placeholder="Nombre o razón social">
+        <input formControlName="phone" type="text" id="" placeholder="Número telefónico">
+        <input formControlName="email" type="text" id="" placeholder="Correo electrónico">
+        <input formControlName="password" type="password" id="" placeholder="Contraseña">
+        
+        <label for="Category">Categoría:</label>
+        <select formControlName="category" name="Category" id="" >
+            <option *ngFor="let c of getCategories()" [ngValue]="c" value="Categoría">
+                {{ c }}
+            </option>
+        </select>
+        <div class="municipality">
+            <label for="Departamento">Departamento:</label>
+            <label for="Municipio">Municipio:</label>
+        </div>
+        <div class="municipality">
+            <select formControlName="departments"  name="Departamento" id="">
+                <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
+                    {{ dep[0] }}
+                </option>
+            </select>
+            <select formControlName="municipality"  name="Municipio" id="">
+                <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
+                    {{ m[0] }}
+                </option>
+            </select>
+        </div>
+
+        <label for="Barrio">Barrio:</label>
+        <div class="address">
+            <select name="Barrio" formControlName="neighborhood" >
+                <option *ngFor="let n of getNeighborhoods()" [ngValue]="n" value="Barrio">
+                    {{ n }}
+                </option>
+            </select>
+            <input formControlName="address" type="text" id="" placeholder="Dirección">
+        </div>
+        <input [disabled]="establishmentRegistration.invalid" type="submit" value="Submit" class="submit" (click) = "registerEstablishment()">
+    </form>
+</div>

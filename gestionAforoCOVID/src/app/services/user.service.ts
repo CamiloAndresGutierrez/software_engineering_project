@@ -89,4 +89,37 @@ export class UserService {
     });
   }
 
+  public modify_establishment_info(info : FormGroup): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/modify-info/establishment", info.value).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+
+  public modify_citizen_info(info : FormGroup): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/modify-info/citizen", info.value).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public modify_healthE_info(info : FormGroup): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/modify-info/health-entity", info.value).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
+  public modify_admin(info : FormGroup): Promise<string> {
+    return new Promise<string>((resolve, reject)=>{
+      this.httpClient.post("http://localhost:5000/modify-info/admin", info.value).subscribe(data => {
+        resolve(data['response']);
+      });
+    });
+  }
+
 }

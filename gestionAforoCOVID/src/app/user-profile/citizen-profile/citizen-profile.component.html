@@ -1,0 +1,50 @@
+<div class="jumbotron" >
+    <div class="logout">
+        <h1>Perfil</h1>
+        <input (click)="logOut()" type="submit" value="Cerrar sesión &#8690;">
+    </div>
+    <p>Aquí puede modificar su información de ciudadano y modificar los campos que requiera</p>
+</div>
+
+<div class="form">
+    <h1>Registro de Ciudadano</h1>
+    <form [formGroup]="citizenRegistration" class="registration-form" action="">
+        <input formControlName="name" type="text" id="" placeholder="Nombres">
+        <input formControlName="surname" type="text" id="" placeholder="Apellidos">
+        <input formControlName="password" type="password" id="" placeholder="Contraseña">
+        
+        <label for="gender">Género: </label>
+        <select class="gender" formControlName="gender">
+            <option *ngFor="let g of getGenders()" [ngValue]="g">
+                {{ g }}
+            </option>
+        </select>
+        <div class="municipality labels">
+            <label for="Departamento">Departamento:</label>
+            <label for="Municipio">Municipio:</label>
+        </div>
+        <div class="municipality">
+            <select formControlName="department" name="Departamento" id="">
+                <option *ngFor="let dep of getDepartments()" [ngValue] = "dep" value="Departamento">
+                    {{ dep[0] }}
+                </option>
+            </select>
+            <select formControlName="municipality" name="Municipio" id="">
+                <option *ngFor="let m of getMunicipalities()" [ngValue] = "m" value="Municipio">
+                    {{ m[0] }}
+                </option>
+            </select>
+        </div>
+        <label for="Neighborhoods">Barrio:</label>
+        <div class="address" name="Neighborhoods">
+            <select name="Barrio" formControlName="neighborhood">
+                <option *ngFor="let n of getNeighborhoods()" [ngValue]="n" value="Barrio">
+                    {{ n }}
+                </option>
+                
+            </select>
+            <input formControlName="address" type="text" id="" placeholder="Dirección">
+        </div>
+        <input  type="submit" value="Submit" class="submit" (click)="registerCitizen()">
+    </form>
+</div>
