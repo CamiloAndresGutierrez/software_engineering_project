@@ -15,6 +15,23 @@ citizenCollection = db["citizenCollection"]
 healthEntityCollection = db["healthEntityCollection"]
 adminCollection = db['adminCollection']
 
+def first_admin():
+    id_=1144210801
+    doc="CC"
+
+    valid_username_Admin=adminCollection.find_one({"username": "MainAdminUser"})
+    valid_id = adminCollection.find_one({"id" : id_, "document" : doc})
+
+    flag = True if valid_id == valid_username_Admin == None else False
+
+    if(flag):
+        encoded_password = jwt.encode({"password":"1234admin1234"}, SK, algorithm="HS256").decode('utf-8')
+        adminCollection.insert_one({"name":"Admin", "surname": "", "username": "MainAdminUser", "password" : encoded_password, "document" : doc ,"id" : id_ })
+        return "success"
+    else:
+        return "failed"
+
+
 @app.route("/login", methods=["GET"])
 def main():
     return jsonify({"response": "Hola desde back"})
@@ -321,4 +338,6 @@ def modifyAdminInfo():
     return jsonify({"response" : "success"})
     
 if __name__ == "__main__":
+    print(first_admin())
+    
     app.run(debug=True, port=5000)
