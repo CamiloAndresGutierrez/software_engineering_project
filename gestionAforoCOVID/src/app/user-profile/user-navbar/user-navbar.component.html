@@ -13,13 +13,13 @@
     <div class="button-group hide-mobile" *ngIf="isCitizen()">
         <a class="test" href="/dashboard/citizen-visit">Historial</a>
         <a class="about-us" href="/dashboard/citizen-test">Prueba</a>
-        <a class="login" href="">Código QR</a>
+        <a class="login" href="/dashboard/qr-generation">Código QR</a>
         <a class="register" href="/dashboard/citizen-profile">Perfil</a>
     </div>
 
     <div class="button-group hide-mobile" *ngIf="isEstablishment()">
         <a class="home" href="/dashboard/establishment-visit"> Historial</a>
-        <a class="about-us" href="#">Visita con QR</a>
+        <a class="about-us" href="">Visita con QR</a>
         <a class="login" href="/dashboard/manual-visit">Visita manual</a>
         <a class="login" href="/dashboard/untimely-visit">Visita a destiempo</a>
         <a class="register" href="/dashboard/establishment-profile">Perfil</a>
@@ -45,7 +45,7 @@
     <div *ngIf="isCitizen()" class="button-group-mobile" [ngClass]="checkFlag() ? 'hide-button-group':'show-button-group'">
         <a class="test" href="dashboard/citizen-visit">Historial</a>
         <a class="about-us" href="/dashboard/citizen-test">Prueba</a>
-        <a class="login" href="#">Código QR</a>
+        <a class="login" href="/dashboard/qr-generation">Código QR</a>
         <a class="register" href="/dashboard/citizen-profile">Perfil</a>
     </div>
     

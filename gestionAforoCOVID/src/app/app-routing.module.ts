@@ -8,6 +8,7 @@ import { AdminProfileComponent } from './user-profile/admin-profile/admin-profil
 import { AdminReportsComponent } from './user-profile/admin-reports/admin-reports.component';
 import { CheckRegistrationComponent } from './user-profile/check-registration/check-registration.component';
 import { CitizenProfileComponent } from './user-profile/citizen-profile/citizen-profile.component';
+import { CitizenQrGenerationComponent } from './user-profile/citizen-qr-generation/citizen-qr-generation.component';
 import { CitizenReportComponent } from './user-profile/citizen-report/citizen-report.component';
 import { CitizenTestComponent } from './user-profile/citizen-test/citizen-test.component';
 import { CitizenVisitComponent } from './user-profile/citizen-visit/citizen-visit.component';
@@ -175,6 +176,11 @@ const routes: Routes = [
           },
           
         ]
+      },
+      {
+        path : 'qr-generation',
+        component : CitizenQrGenerationComponent,
+        canActivate : [CitizenGuard]
       }
 
 

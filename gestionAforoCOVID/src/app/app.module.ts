@@ -41,6 +41,8 @@ import { TestReportComponent } from './user-profile/test-report/test-report.comp
 import { CitizenReportComponent } from './user-profile/citizen-report/citizen-report.component';
 import { EstablishmentReportComponent } from './user-profile/establishment-report/establishment-report.component';
 import { HealthEntityReportComponent } from './user-profile/health-entity-report/health-entity-report.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { CitizenQrGenerationComponent } from './user-profile/citizen-qr-generation/citizen-qr-generation.component';
 
 
 @NgModule({
@@ -79,14 +81,16 @@ import { HealthEntityReportComponent } from './user-profile/health-entity-report
     TestReportComponent,
     CitizenReportComponent,
     EstablishmentReportComponent,
-    HealthEntityReportComponent
+    HealthEntityReportComponent,
+    CitizenQrGenerationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxQRCodeModule,
   ],
   providers: [
     DashboardGuard,

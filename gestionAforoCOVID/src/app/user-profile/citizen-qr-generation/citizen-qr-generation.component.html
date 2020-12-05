@@ -1,0 +1,18 @@
+<div class="jumbotron" >
+    <h1>Código QR</h1>
+</div>
+
+<div class="container">
+    <div id="qrcontainer">
+        <ngx-qrcode
+        [elementType]="elementType"
+        [errorCorrectionLevel]="correctionLevel"
+        [value]="value"
+        cssClass="bshadow"
+        [scale]="scale"></ngx-qrcode>
+    </div>
+    <div class="qrinfo">
+        <h3>Use este código QR para agilizar el ingreso al establecimiento público</h3>
+        <button class="filter" (click)="downloadTablePDF()">Descargar código</button>
+    </div>
+</div>
