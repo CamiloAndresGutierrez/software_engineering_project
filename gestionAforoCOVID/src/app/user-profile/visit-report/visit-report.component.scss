@@ -125,13 +125,13 @@ button::-moz-focus-inner {
 
 .filters{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
     @include breakpoints-down(large){
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
     @include breakpoints-down(medium){
         grid-template-columns: repeat(2, 1fr);
@@ -141,3 +141,10 @@ button::-moz-focus-inner {
     }
     
 }
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

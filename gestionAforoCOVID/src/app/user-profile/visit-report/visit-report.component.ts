@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReportServiceService } from 'src/app/services/report-service.service';
+import * as XLSX from 'xlsx';
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-visit-report',
@@ -8,9 +10,9 @@ import { ReportServiceService } from 'src/app/services/report-service.service';
   styleUrls: ['./visit-report.component.scss']
 })
 export class VisitReportComponent implements OnInit {
-
+  
   constructor(private reportservice : ReportServiceService) { }
-
+  
   visit_report : any;
   aux_visit_report : any;
   date : string = "";
@@ -73,9 +75,37 @@ export class VisitReportComponent implements OnInit {
         aux.push(info[i])
       }
     }
-    
     this.visit_report = aux;
   }
-    
+  private fileName = "reporteVisitas.xlsx"
+
+  downloadTableExcel(){
+      let table = document.getElementById('reportTable');
+      const ws : XLSX.WorkSheet = XLSX.utils.table_to_sheet(table);
+
+      const wb : XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+      XLSX.writeFile(wb, this.fileName);
+
+    }
+
+
+
+  downloadTablePDF(){
+    const options = {
+      filename : "reporteVisitas.pdf",
+      image : {type : 'jpeg'},
+      html2canvas : {},
+      jsPDF : {orientation: 'landscape'}
+    };
+
+    const content : Element = document.getElementById('reportTable');
+
+    html2pdf()
+      .from(content)
+      .set(options)
+      .save();
+  }
 
 }

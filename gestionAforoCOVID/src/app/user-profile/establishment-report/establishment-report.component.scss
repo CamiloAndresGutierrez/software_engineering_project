@@ -12,7 +12,7 @@
         0 6.7px 5.3px rgba(0, 0, 0, 0.048),
         0 12.5px 10px rgba(0, 0, 0, 0.06);
     @include breakpoints-down(medium){
-        padding: 0.625rem 3.125rem;
+        padding: 0.625rem 1rem;
     }
 }
 
@@ -108,6 +108,7 @@ button::-moz-focus-inner {
 
     &-delete{
         background-color: var(--dark-blue);
+        margin-right : 5px;
         padding: 8px 5px;
         border-radius: 5px;
         border : none;
@@ -121,20 +122,14 @@ button::-moz-focus-inner {
 
 
 .filters{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
-    @include breakpoints-down(large){
-        grid-template-columns: repeat(3, 1fr);
-    }
-    @include breakpoints-down(medium){
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @include breakpoints-down(small){
-        grid-template-columns: repeat(1, 1fr);
-    }
-    
+    margin-top: 2rem;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

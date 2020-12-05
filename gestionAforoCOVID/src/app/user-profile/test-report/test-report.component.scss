@@ -115,6 +115,7 @@ button::-moz-focus-inner {
         border-radius: 5px;
         border : none;
         color: white;
+        margin-right : 5px;
         background-color: rgb(250, 73, 73);
         &:hover{
             background-color: red;
@@ -122,22 +123,8 @@ button::-moz-focus-inner {
     }
 }
 
-
-.filters{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    @include breakpoints-down(large){
-        grid-template-columns: repeat(3, 1fr);
-    }
-    @include breakpoints-down(medium){
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @include breakpoints-down(small){
-        grid-template-columns: repeat(1, 1fr);
-    }
-    
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

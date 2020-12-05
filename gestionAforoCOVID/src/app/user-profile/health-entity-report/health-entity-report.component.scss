@@ -121,20 +121,14 @@ button::-moz-focus-inner {
 
 
 .filters{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
-    @include breakpoints-down(large){
-        grid-template-columns: repeat(3, 1fr);
-    }
-    @include breakpoints-down(medium){
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @include breakpoints-down(small){
-        grid-template-columns: repeat(1, 1fr);
-    }
-    
+    margin-top: 2rem;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReportServiceService } from 'src/app/services/report-service.service';
+import * as XLSX from 'xlsx';
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-test-report',
@@ -15,20 +17,20 @@ export class TestReportComponent implements OnInit {
   date_info = new FormGroup({
     date : new FormControl('', Validators.required)
   })
-
+  
   constructor(private reportService : ReportServiceService) { }
-
+  
   ngOnInit(): void {
     this.reportService.get_tests_report().then(result => {
       this.test_report = result;
       this.aux_test_report = result;
     })
   }
-
+  
   getReport(){
     return this.test_report;
   }
-
+  
   setDate(){
     this.date = this.date_info.value['date'];
     //this.visit_info = this.aux_visit_info;
@@ -46,5 +48,36 @@ export class TestReportComponent implements OnInit {
   deleteFilter(){
     this.test_report=this.aux_test_report
   }
+
+  private fileName = "reportePruebas.xlsx"
+
+  downloadTableExcel(){
+    let table = document.getElementById('reportTable');
+    const ws : XLSX.WorkSheet = XLSX.utils.table_to_sheet(table);
+
+    const wb : XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    XLSX.writeFile(wb, this.fileName);
+
+  }
+
+
+  downloadTablePDF(){
+    const options = {
+      filename : "reportePruebas.pdf",
+      image : {type : 'jpeg'},
+      html2canvas : {},
+      jsPDF : {orientation: 'landscape'}
+    };
+
+    const content : Element = document.getElementById('reportTable');
+
+    html2pdf()
+      .from(content)
+      .set(options)
+      .save();
+  }
+  
 
 }

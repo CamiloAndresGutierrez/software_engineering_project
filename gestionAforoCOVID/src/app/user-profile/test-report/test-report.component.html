@@ -1,16 +1,21 @@
 <div class="jumbotron" >
-    <h1>Reporte de pruebas por COVID-19</h1>
+    <div class="title">
+        <h1>Reporte de pruebas por COVID-19</h1>
+        <a href="/dashboard/reports">Volver</a>
+    </div>
 </div>
 <div class="filters">
     <div class="date-picker" [formGroup]="date_info">
         <input formControlName="date" class="date_" type="date" name="" id="">
         <button class="filter" (click)="setDate()">Filtrar</button>
         <button class="filter-delete" (click)="deleteFilter()">Borrar filtro</button>
+        <button class="filter" (click)="downloadTableExcel()" >Descargar excel</button>
+        <button class="filter" (click)="downloadTablePDF()" >Descargar PDF</button>
     </div>
 </div> 
 
 <div class="container">
-    <table>
+    <table id="reportTable">
         <tr>
             <th>Número de documento</th>
             <th>Tipo de documento</th>

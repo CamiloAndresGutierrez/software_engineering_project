@@ -1,5 +1,8 @@
 <div class="jumbotron" >
-    <h1>Reporte de ciudadanos</h1>
+    <div class="title">
+        <h1>Reporte de ciudadanos</h1>
+        <a href="/dashboard/reports">Volver</a>
+    </div>
 </div>
 <div class="filters">
     <div class="date-picker" [formGroup]="document">
@@ -10,11 +13,13 @@
         </select>
         <button class="filter" (click)="setDocument()">Filtrar</button>
         <button class="filter-delete" (click)="deleteFilter()">Borrar filtro</button>
+        <button class="filter" (click)="downloadTableExcel()" >Descargar excel</button>
+        <button class="filter" (click)="downloadTablePDF()" >Descargar PDF</button>
     </div>
 </div> 
 
 <div class="container">
-    <table>
+    <table id="reportTable">
         <tr>
             <th>Número de documento</th>
             <th>Tipo de documento</th>
