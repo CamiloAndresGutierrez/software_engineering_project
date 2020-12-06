@@ -207,3 +207,17 @@ nav{
         height: 50vh;
     }
 }
+
+.navbar-button { 
+    border:none;
+    font-size: 1rem;
+    background-color: white;
+    &-profile{
+        border:none;
+        font-size: 1rem;
+        background-color: var(--dark-blue);
+        color:white;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+}

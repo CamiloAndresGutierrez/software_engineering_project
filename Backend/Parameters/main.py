@@ -19,6 +19,9 @@ quarantineCollection = db['quarantineCollection']
 
 @app.route("/add/document", methods=["POST"])
 def add_document():
+    """
+    Esta función le permite al administrador, agregar un nuevo tipo de documento
+    """
     req_ = request.json
     name = req_['document']
     doc = documentCollection.find_one({"document_name": name})
@@ -30,6 +33,9 @@ def add_document():
 
 @app.route("/get/document", methods=["GET"])
 def get_document():
+    """
+    Esta función le permite al administrador, revisar los tipo de documento que existen
+    """
     all_ = documentCollection.find()
     document_names = []
     for i in all_:
@@ -38,6 +44,9 @@ def get_document():
 
 @app.route("/delete/document", methods=["POST"])
 def delete_document():
+    """
+    Esta función le permite al administrador, eliminar tipos de documento que existen
+    """
     req_= request.json
     name = req_['document']
     doc = documentCollection.delete_one({"document_name":name})
@@ -45,6 +54,9 @@ def delete_document():
 
 @app.route("/add/department", methods=["POST"])
 def add_department():
+    """
+    Esta función le permite al administrador, agregar un nuevo departamento
+    """
     req_ = request.json
     name = req_['department']
     cod = req_['code']
@@ -57,6 +69,9 @@ def add_department():
 
 @app.route("/get/department", methods=["GET"])
 def get_department():
+    """
+    Esta función le permite al administrador, revisar departamentos que existen
+    """
     all_ = departmentCollection.find()
     department_names = []
     for i in all_:
@@ -65,6 +80,9 @@ def get_department():
 
 @app.route("/delete/department", methods=["POST"])
 def delete_department():
+    """
+    Esta función le permite al administrador, eliminar departamentos que existen
+    """
     req_= request.json
     cod = req_['code']
     print(req_)
@@ -73,6 +91,9 @@ def delete_department():
 
 @app.route("/add/municipality", methods=["POST"])
 def add_municipality():
+    """
+    Esta función le permite al administrador, agregar un nuevo municipio
+    """
     req_ = request.json
     name = req_['municipality']
     cod = req_['code']
@@ -86,6 +107,9 @@ def add_municipality():
 
 @app.route("/get/municipality", methods=["GET"])
 def get_municipality():
+    """
+    Esta función le permite al administrador, revisar municipios que existen
+    """
     all_ = municipalityCollection.find()
     department_names = []
     for i in all_:
@@ -94,6 +118,9 @@ def get_municipality():
 
 @app.route("/delete/municipality", methods=["POST"])
 def delete_municipality():
+    """
+    Esta función le permite al administrador, eliminar municipios que existen
+    """
     req_= request.json
     cod = req_['code']
     dep = req_['department']
@@ -103,6 +130,9 @@ def delete_municipality():
 
 @app.route("/add/neighborhood", methods=["POST"])
 def add_neighborhood():
+    """
+    Esta función le permite al administrador, agregar un nuevo barrio
+    """
     req_ = request.json
     name = req_['neighborhood']
     doc = neighborhoodCollection.find_one({"neighborhood" : name})
@@ -114,6 +144,9 @@ def add_neighborhood():
 
 @app.route("/get/neighborhood", methods=["GET"])
 def get_neighborhood():
+    """
+    Esta función le permite al administrador, revisar barrios que existen
+    """
     all_ = neighborhoodCollection.find()
     department_names = []
     for i in all_:
@@ -122,6 +155,9 @@ def get_neighborhood():
 
 @app.route("/delete/neighborhood", methods=["POST"])
 def delete_neighborhood():
+    """
+    Esta función le permite al administrador, eliminar barrios que existen
+    """
     req_= request.json
     name = req_['neighborhood']
     neighborhoodCollection.delete_one({"neighborhood" : name})
@@ -129,6 +165,9 @@ def delete_neighborhood():
 
 @app.route("/add/category", methods=["POST"])
 def add_category():
+    """
+    Esta función le permite al administrador, agregar una nueva categoría
+    """
     req_ = request.json
     name = req_['category']
     doc = categoryCollection.find_one({"name" : name})
@@ -140,6 +179,9 @@ def add_category():
 
 @app.route("/get/category", methods=["GET"])
 def get_category():
+    """
+    Esta función le permite al administrador, revisar categorías que existen
+    """
     all_ = categoryCollection.find()
     category_names = []
     for i in all_:
@@ -148,6 +190,9 @@ def get_category():
 
 @app.route("/delete/category", methods=["POST"])
 def delete_category():
+    """
+    Esta función le permite al administrador, eliminar categorías que existen
+    """
     req_= request.json
     id_=req_['category']
     categoryCollection.delete_one({"name" : id_})
@@ -155,6 +200,9 @@ def delete_category():
 
 @app.route("/quarantine", methods=["GET", "POST"])
 def set_quarantine():
+    """
+    Esta función le permite al usuario modificar el tiempo de cuarentena (en días), que debe cumplir una persona, 
+    """
     if(request.method == "GET"):
         days = quarantineCollection.find()
         aux = 0

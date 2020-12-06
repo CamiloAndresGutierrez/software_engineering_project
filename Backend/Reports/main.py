@@ -20,6 +20,9 @@ visitCollection=db3['visitCollection']
 
 @app.route('/report/tests', methods=['GET'])
 def testReports():
+    """
+    Esta función devuelve todas las pruebas realizadas por COVID-19
+    """
     testReport = testCollection.find()
     generatedReport=[]
     for i in testReport:
@@ -30,8 +33,10 @@ def testReports():
 
 @app.route('/report/visit', methods=['GET'])
 def visitsReport():
+    """
+    Esta función devuelve todas las visitas realizadas a los establecimientos por los ciudadanos
+    """
     visitReport=visitCollection.find()
-
     generatedReport=[]
     for i in visitReport:
         date_time=str(i['date']).split()
@@ -42,6 +47,9 @@ def visitsReport():
 
 @app.route('/report/citizen', methods=['GET'])
 def citizenReports():
+    """
+    Esta función devuelve todos los ciudadanos registrados en el sistema
+    """
     citizenReports=citizenCollection.find()
 
     generatedReport=[]
@@ -52,6 +60,9 @@ def citizenReports():
 
 @app.route('/report/establishment', methods=['GET'])
 def establishmentReports():
+    """
+    Esta función devuelve todos los establecimientos registrados en el sistema
+    """
     establishmentReport=establishmentCollection.find()
 
     generatedReport=[]
@@ -62,6 +73,9 @@ def establishmentReports():
 
 @app.route('/report/health-entity', methods=['GET'])
 def healthEreports():
+    """
+    Esta función devuelve todas las entidades de salud registradas en el sistema
+    """
     healthEreport=healthEntityCollection.find()
 
     generatedReport=[]

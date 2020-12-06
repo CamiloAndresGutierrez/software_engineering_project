@@ -16,6 +16,9 @@ healthEntityCollection = db["healthEntityCollection"]
 adminCollection = db['adminCollection']
 
 def first_admin():
+    """
+    Esta función crea el primer admin del sistema.
+    """
     id_=1144210801
     doc="CC"
 
@@ -38,6 +41,9 @@ def main():
 
 @app.route("/registration/establishment", methods=['POST'])
 def estRegistration():
+    """
+    Esta función permite el registro de establecimientos públicos en el sistema.
+    """
     req_ = request.json
     nit = req_['NIT']
     name = req_['name']
@@ -74,6 +80,9 @@ def estRegistration():
 
 @app.route("/registration/citizen", methods=["POST"])
 def citRegistration():
+    """
+    Esta función permite el registro de ciudadanos en el sistema.
+    """
     req_ = request.json
     name = req_['name']
     surname = req_['surname']
@@ -111,6 +120,9 @@ def citRegistration():
 
 @app.route("/registration/healthEntity", methods=["POST"])
 def healthEntityRegistration():
+    """
+    Esta función permite el registro de entidades de salud en el sistema.
+    """
     req_ = request.json
     nit = req_['NIT']
     name = req_['name']
@@ -146,6 +158,9 @@ def healthEntityRegistration():
 
 @app.route("/add/admin", methods=["POST"])
 def add_admin():
+    """
+    Esta función permite que un administrador pueda agregar a otro administrador.
+    """
     req_ = request.json
     name = req_['name']
     surname = req_['surname']
@@ -178,6 +193,9 @@ def add_admin():
 
 @app.route("/login", methods=["POST"])
 def login():
+    """
+    Esta función permite realizar el login del usuario a través del username y contraseña
+    """
     req_ = request.json
     username = req_['username']
     password = req_['password']
@@ -207,6 +225,9 @@ def login():
 
 @app.route("/get/pending", methods=['GET'])
 def get_pending():
+    """
+    Esta función permite ver al administrador cuáles entidades de salud o establecimientos están pendientes por aprobación.
+    """
     pending_PE = establishmentCollection.find({"veredict" : "pending"})
     pending_HE = healthEntityCollection.find({"veredict" : "pending"})
     pending = []
@@ -218,6 +239,9 @@ def get_pending():
 
 @app.route("/accept/pending", methods=['POST'])
 def accept_pending():
+    """
+    Esta función permite aceptar el registro de establecimiento públicos o entidades de salud en el sistema.
+    """
     req_ = request.json
     nit = req_['NIT']
     healthEntityCollection.update_one({"nit" : nit},{ "$set" : {"veredict" : "accepted"}})
@@ -226,6 +250,9 @@ def accept_pending():
 
 @app.route("/reject/pending", methods=['POST'])
 def reject_account():
+    """
+    Esta función permite rechazar y borrar el registro de establecimiento públicos o entidades de salud en el sistema.
+    """
     req_=request.json
     nit = req_['NIT']
     healthEntityCollection.delete_one({"nit" : nit})
@@ -235,6 +262,10 @@ def reject_account():
 
 @app.route("/user-state", methods=["GET", "POST"])
 def user_state():
+    """
+    Esta función permite a través del método GET, revisar las entidades o establecimientos que se pueden deshabilitar o habilitar
+    Y a través del método POST, cambiar el estado de deshabilitado a habilitado y viceversa
+    """
     if request.method == 'GET':
         accounts_PE = establishmentCollection.find({"veredict" : {"$ne" : "pending"} })
         accounts_HE = healthEntityCollection.find({"veredict" : {"$ne" : "pending"} })
@@ -255,6 +286,9 @@ def user_state():
 
 @app.route("/modify-info/establishment", methods=['POST'])
 def modifyEstablishmentInfo():
+    """
+    Esta función permite modificar la información de un establecimiento público
+    """
     req_=request.json
     nit=req_['NIT']
 
@@ -277,6 +311,9 @@ def modifyEstablishmentInfo():
 
 @app.route("/modify-info/citizen", methods=['POST'])
 def modifyCitizenInfo():
+    """
+    Esta función permite modificar la información de un ciduadano
+    """
     req_=request.json
     id_=req_['id']
     doc=req_['document']
@@ -299,6 +336,9 @@ def modifyCitizenInfo():
 
 @app.route("/modify-info/health-entity", methods=['POST'])
 def modifyHealthEntityInfo():
+    """
+    Esta función permite modificar la información de una entidad de salud
+    """
     req_=request.json
     nit=req_['NIT']
 
@@ -321,6 +361,9 @@ def modifyHealthEntityInfo():
 
 @app.route("/modify-info/admin", methods=['POST'])
 def modifyAdminInfo():
+    """
+    Esta función permite modificar la información de un administrador
+    """
     req_=request.json
     id_=req_['id']
     doc=req_['document']

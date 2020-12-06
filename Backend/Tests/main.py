@@ -15,6 +15,9 @@ CORS(app)
 
 @app.route("/add/test", methods=['POST'])
 def add_test():
+    """
+    Esta función permite agregar pruebas por COVID-19 realizadas a ciudadanos.
+    """
     req_=request.json
     time=req_['time']
     date=req_['date']
@@ -26,6 +29,9 @@ def add_test():
 
 @app.route("/get/test/citizen", methods=['POST'])
 def get_test():
+    """
+    Esta función permite revisar las pruebas por COVID-19 realizadas al ciudadano que ha ingresado al sistema.
+    """
     req_=request.json
     id_=req_['id']
     doc=req_['document']
@@ -41,6 +47,9 @@ def get_test():
 
 @app.route("/get/test/health-entity", methods=['POST'])
 def get_test_HE():
+    """
+    Esta función permite revisar las pruebas por COVID-19 realizadas en la entidad de salud que ha ingresado al sistema.
+    """
     req_=request.json
     nit=req_['nit']
 
@@ -57,6 +66,9 @@ def get_test_HE():
 
 @app.route("/modify/test", methods=['POST'])
 def modify_test():
+    """
+    Esta función permite modificar el estado de la prueba por COVID-19, de Pendiente a Positiva o Negativa.
+    """
     req_=request.json
     id_=req_['id']
     doc=req_['document']

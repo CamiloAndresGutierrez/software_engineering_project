@@ -85,7 +85,7 @@ export class UntimelyVisitComponent implements OnInit {
     let decoded_ = jwtDecode(token);
     this.untimely_visit.value['nit'] = decoded_['id']
     this.untimely_visit.value['establishment_name'] = decoded_['name']
-    this.untimely_visit.value['establishment_category'] = decoded_['category']
+    this.untimely_visit.value['category'] = decoded_['category']
     this.visitServices.register_untimely_visit(this.untimely_visit).then(result => {
       this.response = result;
       if(this.response == "success"){

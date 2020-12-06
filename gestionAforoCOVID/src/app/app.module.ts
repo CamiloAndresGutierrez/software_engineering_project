@@ -43,6 +43,7 @@ import { EstablishmentReportComponent } from './user-profile/establishment-repor
 import { HealthEntityReportComponent } from './user-profile/health-entity-report/health-entity-report.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { CitizenQrGenerationComponent } from './user-profile/citizen-qr-generation/citizen-qr-generation.component';
+import { QrReaderComponent } from './user-profile/qr-reader/qr-reader.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { CitizenQrGenerationComponent } from './user-profile/citizen-qr-generati
     CitizenReportComponent,
     EstablishmentReportComponent,
     HealthEntityReportComponent,
-    CitizenQrGenerationComponent
+    CitizenQrGenerationComponent,
+    QrReaderComponent
   ],
   imports: [
     BrowserModule,

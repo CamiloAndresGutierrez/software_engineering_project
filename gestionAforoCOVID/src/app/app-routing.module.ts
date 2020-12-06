@@ -22,6 +22,7 @@ import { HealthEntityReportComponent } from './user-profile/health-entity-report
 import { ManualVisitComponent } from './user-profile/manual-visit/manual-visit.component';
 import { NewTestComponent } from './user-profile/new-test/new-test.component';
 import { ParametersComponent } from './user-profile/parameters/parameters.component';
+import { QrReaderComponent } from './user-profile/qr-reader/qr-reader.component';
 import { TestReportComponent } from './user-profile/test-report/test-report.component';
 import { UntimelyVisitComponent } from './user-profile/untimely-visit/untimely-visit.component';
 import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
@@ -181,6 +182,11 @@ const routes: Routes = [
         path : 'qr-generation',
         component : CitizenQrGenerationComponent,
         canActivate : [CitizenGuard]
+      },
+      {
+        path: 'qr-reader',
+        component : QrReaderComponent,
+        canActivate : [EstablishmentGuard]
       }
 
 

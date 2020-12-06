@@ -23,6 +23,9 @@ def main():
 
 @app.route("/visit/manual", methods=["POST"])
 def manual_visit():
+    """
+    Esta función permite registrar una visita de manera manual a través de la información del documento de la persona, si lleva o no tapabocas y su temperatura
+    """
     req_ = request.json
     id_=req_['id']
     doc=req_['document']
@@ -83,6 +86,9 @@ def manual_visit():
 
 @app.route("/visit/untimely", methods=['POST'])
 def untimely_visit():
+    """
+    Esta función permite registrar la visita de un usuario a destiempo, a través de todos los datos del ciudadano.
+    """
     req_=request.json
     date=req_['date']
     time=req_['time']
@@ -108,6 +114,9 @@ def untimely_visit():
 
 @app.route("/citizen/visit", methods=['POST'])
 def citizen_visit():
+    """
+    Esta función permite revisar el historial de visitas del ciudadano a los establecimientos públicos.
+    """
     req_=request.json
     id_=req_['id']
     doc=req_['document']
@@ -121,6 +130,9 @@ def citizen_visit():
 
 @app.route("/establishment/visit", methods=['POST'])
 def est_visit():
+    """
+    Esta función permite revisar las visitas de los ciudadanos a los establecimientos públicos
+    """
     req_=request.json
     nit=req_['nit']
     visit=visitCollection.find({"nit" : nit})
