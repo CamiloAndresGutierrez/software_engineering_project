@@ -1,6 +1,6 @@
 <div class="jumbotron" >
     <h1>Parámetros del sistema</h1>
-    <p>Aquí puede crear, modificar y eliminar parámetros del sistema.</p>
+    <p>Aquí puede crear, Agregar y eliminar parámetros del sistema.</p>
 </div>
 
 <div class="container">
@@ -41,7 +41,7 @@
 
             <div [formGroup]="new_category" name="quarantine">
                 <input formControlName="new_cat" class="info-input" type="text" placeholder="Nueva categoría">
-                <input [disabled]="new_category.invalid" (click)="send_category()" class="send-info" value="Modificar" type="submit">
+                <input [disabled]="new_category.invalid" (click)="send_category()" class="send-info" value="Agregar" type="submit">
             </div>
         </div>
         <div class="parameter-container">
@@ -63,7 +63,7 @@
                 <input formControlName="municipality" class="mun-input" type="text" placeholder="Nombre municipio">
                 <input formControlName="code" class="mun-input" type="number" placeholder="Código municipio">
                 <input formControlName="department" class="mun-input" type="number" placeholder="Código departamento">
-                <input (click)="send_municipality()" [disabled]="municipality_info.invalid" class="send-info" value="Modificar" type="submit">
+                <input (click)="send_municipality()" [disabled]="municipality_info.invalid" class="send-info" value="Agregar" type="submit">
             </div>
         </div>
 
@@ -84,7 +84,7 @@
             <div [formGroup] = "dep_info" name="quarantine">
                 <input formControlName="department" class="dep-input" type="text" placeholder="Nuevo departamento">
                 <input formControlName="code" class="dep-input" type="number" placeholder="Código departamento">
-                <input (click)="send_department()" [disabled]="dep_info.invalid" class="send-info" value="Modificar" type="submit">
+                <input (click)="send_department()" [disabled]="dep_info.invalid" class="send-info" value="Agregar" type="submit">
             </div>
         </div>
 
@@ -106,7 +106,7 @@
 
             <div [formGroup]="ngh_info" name="quarantine">
                 <input formControlName="neighborhood" class="info-input" type="text" placeholder="Nuevo barrio">
-                <input (click)="send_neighborhood()" [disabled]="ngh_info.invalid"  class="send-info" value="Modificar" type="submit">
+                <input (click)="send_neighborhood()" [disabled]="ngh_info.invalid"  class="send-info" value="Agregar" type="submit">
             </div>
         </div>
         <div class="parameter-container">
