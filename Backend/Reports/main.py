@@ -87,4 +87,4 @@ def healthEreports():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5400)
+    app.run(debug=False, port=5400, host="0.0.0.0")
