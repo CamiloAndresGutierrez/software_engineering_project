@@ -212,7 +212,6 @@ def set_quarantine():
     else: 
         req_=request.json
         days = req_['days']
-        print(days)
         q = quarantineCollection.find()
         if(q == None):
             quarantineCollection.insert_one({"days": days})
