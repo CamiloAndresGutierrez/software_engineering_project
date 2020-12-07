@@ -11,7 +11,7 @@ export class VisitsService {
 
   public register_untimely_visit(visit_info : FormGroup) : Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://3.20.225.166:5200/visit/untimely", visit_info.value , {}).subscribe(data => {
+      this.httpClient.post("http://13.58.72.66:5200/visit/untimely", visit_info.value , {}).subscribe(data => {
         resolve(data['response']);
       });
     });
@@ -19,7 +19,7 @@ export class VisitsService {
 
   public manual_visit(visit_info : FormGroup) : Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://3.20.225.166:5200/visit/manual", visit_info.value , {}).subscribe(data => {
+      this.httpClient.post("http://13.58.72.66:5200/visit/manual", visit_info.value , {}).subscribe(data => {
         resolve(data['response']);
       });
     });
@@ -27,7 +27,7 @@ export class VisitsService {
 
   public get_visits(id : number, document : string) : Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://3.20.225.166:5200/citizen/visit", {"id" : id, "document": document} , {}).subscribe(data => {
+      this.httpClient.post("http://13.58.72.66:5200/citizen/visit", {"id" : id, "document": document} , {}).subscribe(data => {
         resolve(data['response']);
       });
     });
@@ -35,7 +35,7 @@ export class VisitsService {
 
   public get_visits_PE(nit : string) : Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://3.20.225.166:5200/establishment/visit", {"nit" : nit} , {}).subscribe(data => {
+      this.httpClient.post("http://13.58.72.66:5200/establishment/visit", {"nit" : nit} , {}).subscribe(data => {
         resolve(data['response']);
       });
     });
