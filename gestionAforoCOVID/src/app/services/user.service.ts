@@ -91,7 +91,7 @@ export class UserService {
 
   public modify_establishment_info(info : FormGroup): Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://localhost:5000/modify-info/establishment", info.value).subscribe(data => {
+      this.httpClient.post("http://3.20.225.166:5000/modify-info/establishment", info.value).subscribe(data => {
         resolve(data['response']);
       });
     });
@@ -100,7 +100,7 @@ export class UserService {
 
   public modify_citizen_info(info : FormGroup): Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://localhost:5000/modify-info/citizen", info.value).subscribe(data => {
+      this.httpClient.post("http://3.20.225.166:5000/modify-info/citizen", info.value).subscribe(data => {
         resolve(data['response']);
       });
     });
@@ -108,7 +108,7 @@ export class UserService {
 
   public modify_healthE_info(info : FormGroup): Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://localhost:5000/modify-info/health-entity", info.value).subscribe(data => {
+      this.httpClient.post("http://3.20.225.166:5000/modify-info/health-entity", info.value).subscribe(data => {
         resolve(data['response']);
       });
     });
@@ -116,7 +116,7 @@ export class UserService {
 
   public modify_admin(info : FormGroup): Promise<string> {
     return new Promise<string>((resolve, reject)=>{
-      this.httpClient.post("http://localhost:5000/modify-info/admin", info.value).subscribe(data => {
+      this.httpClient.post("http://3.20.225.166:5000/modify-info/admin", info.value).subscribe(data => {
         resolve(data['response']);
       });
     });
